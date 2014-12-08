@@ -4,6 +4,7 @@ redirect_from:
   - /Guidelines:Application_Deployment/
 ---
 
+Este GuideLine estão desenhados para ajudar ..... exemplo demonstração de edicao.. 
 These guidelines are designed to help you plan the layout for your application or libraries and will ensure that your software is shipped in a form that is consistent with other Mono-based software projects and components.
 
 This document also discusses how to distribute libraries whose APIs are not frozen: how to distribute and consume them.
