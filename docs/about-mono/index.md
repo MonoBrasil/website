@@ -29,22 +29,22 @@ Existem diversos componentes que forma o Mono:
 Pontos Altos das Capacidades do Mono
 ------------------------------------
 
-[Multi-Plataforma](/docs/about-mono/supported-platforms/)
+[Multi-Plataforma](/docs/about-mono/supported-platforms/)<br/>
 Roda em [Linux](/docs/about-mono/supported-platforms/linux/), [OS X](/docs/about-mono/supported-platforms/osx/), [BSD](/docs/about-mono/supported-platforms/bsd/), e [Microsoft Windows](/docs/getting-started/install/windows/), incluindo hardware [x86](/docs/about-mono/supported-platforms/x86/), [x86-64](/docs/about-mono/supported-platforms/amd64/), [ARM](/docs/about-mono/supported-platforms/arm/), [s390](/docs/about-mono/supported-platforms/s390/), [PowerPC](/docs/about-mono/supported-platforms/powerpc/) e muito mais...
 
-[Multi-Linguagem](/docs/about-mono/languages/)
-Desenvolva em [C# 4.5](/docs/about-mono/languages/csharp/) (incluindo LINQ e `dynamic`), [VB 8](/docs/about-mono/languages/visualbasic/), [Java](/docs/about-mono/languages/java/), [Python](/archived/python "Python"), [Ruby](http://www.ironruby.net/), [Eiffel](http://www.eiffel.com/), [F#](http://research.microsoft.com/fsharp/), [Oxygene](http://remobjects.com/oxygene), [Boo](http://pt.wikipedia.org/wiki/Boo) e mais...
+[Multi-Linguagem](/docs/about-mono/languages/)<br/>
+Desenvolva em [C# 4.5](/docs/about-mono/languages/csharp/) (incluindo LINQ e `dynamic`), [VB 8](/docs/about-mono/languages/visualbasic/), [Java](/docs/about-mono/languages/java/), [Python](/archived/python), [Ruby](http://www.ironruby.net/), [Eiffel](http://www.eiffel.com/), [F#](http://research.microsoft.com/fsharp/), [Oxygene](http://remobjects.com/oxygene), [Boo](http://pt.wikipedia.org/wiki/Boo) e mais...
 
-Compatibilidade Binária
+Compatibilidade Binária<br/>
 Construa sua aplicação em uma implementação no padrão [ECMA](/docs/about-mono/languages/ecma/) do [Common Language Infrastructure](/docs/advanced/runtime/)e do [C#](/docs/about-mono/languages/csharp/).
 
-[API Compatível com a Microsoft](/docs/getting-started/application-portability/)
+[API Compatível com a Microsoft](/docs/getting-started/application-portability/)<br/>
 Rode aplicações [ASP.NET](/docs/web/aspnet/), [ADO.NET](/docs/database-access/adonet/), [Silverlight](/docs/web/moonlight/) e [Windows.Forms](/docs/gui/winforms/) sem recompilação.
 
-[Código Aberto, Software Livre](/docs/faq/licensing/)
+[Código Aberto, Software Livre](/docs/faq/licensing/)<br/>
 O runtime, compiladores, e bibliotecas do Mono são distribuidos sob licenças aprovadas pela OSI e estão disponíveis para licenciamento-dual.
 
-[Extensiva Cobertura Tecnológica](/docs/about-mono/plans/)
+[Extensiva Cobertura Tecnológica](/docs/about-mono/plans/)<br/>
 Conexões nativas(bindings) e implementações gerenciadas de muitas bibliotecas e protocolos.
 
 Os Benefícios
@@ -58,7 +58,7 @@ Existem muitos benefícios para quem escolhe o Mono para desenvolver suas aplica
 
 **Biblioteca de Classes Base** - Ter uma extensa biblioteca de classes provê milhares de classes prontas para aumentar a produtividade. Precisa de código de rede ou uma hashtable? Não precisa escrever a sua use a embutida na plataforma.
 
-**Multi-Platform** - O Mono foi construido para ser multi-plataforma. O Mono roda em [Linux](/docs/about-mono/supported-platforms/linux/), [Microsoft Windows](/docs/getting-started/install/windows/), [Mac OS X](/docs/about-mono/supported-platforms/osx/), [BSD](/docs/about-mono/supported-platforms/bsd/), e [Sun Solaris](/docs/about-mono/supported-platforms/solaris/), [Nintendo Wii](/docs/about-mono/supported-platforms/wii/), [Sony PlayStation 3](/docs/about-mono/supported-platforms/playstation3/), [Apple iPhone](/docs/about-mono/supported-platforms/iphone/) e [Android](/docs/about-mono/supported-platforms/android/). Ele também roda em hardware [x86](/docs/about-mono/supported-platforms/x86/), [x86-64](/docs/about-mono/supported-platforms/amd64/), [IA64](/docs/about-mono/supported-platforms/ia64/), [PowerPC](/docs/about-mono/supported-platforms/powerpc/), [SPARC (32)](/docs/about-mono/supported-platforms/sparc/), [ARM](/docs/about-mono/supported-platforms/arm/), Alpha, [s390, s390x (32 and 64 bits)](/docs/about-mono/supported-platforms/s390/) e mais. Desenvolvendo em Mono a sua aplicação lhe permite rodar em praticamente qualquer computador existente.
+**Multi-Platforma** - O Mono foi construido para ser multi-plataforma. O Mono roda em [Linux](/docs/about-mono/supported-platforms/linux/), [Microsoft Windows](/docs/getting-started/install/windows/), [Mac OS X](/docs/about-mono/supported-platforms/osx/), [BSD](/docs/about-mono/supported-platforms/bsd/), e [Sun Solaris](/docs/about-mono/supported-platforms/solaris/), [Nintendo Wii](/docs/about-mono/supported-platforms/wii/), [Sony PlayStation 3](/docs/about-mono/supported-platforms/playstation3/), [Apple iPhone](/docs/about-mono/supported-platforms/iphone/) e [Android](/docs/about-mono/supported-platforms/android/). Ele também roda em hardware [x86](/docs/about-mono/supported-platforms/x86/), [x86-64](/docs/about-mono/supported-platforms/amd64/), [IA64](/docs/about-mono/supported-platforms/ia64/), [PowerPC](/docs/about-mono/supported-platforms/powerpc/), [SPARC (32)](/docs/about-mono/supported-platforms/sparc/), [ARM](/docs/about-mono/supported-platforms/arm/), Alpha, [s390, s390x (32 and 64 bits)](/docs/about-mono/supported-platforms/s390/) e mais. Desenvolvendo em Mono a sua aplicação lhe permite rodar em praticamente qualquer computador existente.
 
 **Common Language Runtime (CLR)** - O CLR permite escolher a linguagem de programação que melhor funciona para você, e poder interoperar com código escrito em qualquer outra linguagem CLR. Por exemplo, você pode escrever uma classe em C#, herdar dela em VB.Net, e usar em Eiffel ou F#. Você pode escrever o código para o Mono em uma [variedae de linguagens de programação](/docs/about-mono/languages/).
 
@@ -70,4 +70,3 @@ Outros Usos
 Veja [Embarcando o Mono](/docs/advanced/embedding/) para detalhes sobre como embutir o Mono.
 
 Veja [Scripting com o Mono](/docs/advanced/embedding/scripting/) para estratégias para habilitar scripts na sua aplicação usando o Mono.
-

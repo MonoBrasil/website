@@ -67,7 +67,7 @@ API Design
 Overview
 --------
 
-In addition to the core Base Class Libraries that are part of Mono, [MonoMac](/MonoMac "MonoMac") ships with bindings for various APIs to allow developers to create native Mac OS X applications with Mono.
+In addition to the core Base Class Libraries that are part of Mono, [MonoMac](/MonoMac) ships with bindings for various APIs to allow developers to create native Mac OS X applications with Mono.
 
 At the core of MonoMac there is an interop engine that bridges the C# world with the Objective-C world as well as bindings for the OSX C-based APIs like CoreGraphics and [OpenGL](#opengl).
 
@@ -109,7 +109,7 @@ These are some of our design principles for the MonoMac binding:
 Unbound Types & Members
 -----------------------
 
-At this point in time, not all Cocoa types and members have been bound for use by managed code. Some frameworks consist solely of C code, and thus can be bound via [P/Invoke](/Interop_with_Native_Libraries). Other frameworks are Objective-C code, and thus require [manual selector invocation](/MonoMac/Documentation/Binding_New_Objective-C_Types "MonoMac/Documentation/Binding New Objective-C Types").
+At this point in time, not all Cocoa types and members have been bound for use by managed code. Some frameworks consist solely of C code, and thus can be bound via [P/Invoke](/Interop_with_Native_Libraries). Other frameworks are Objective-C code, and thus require [manual selector invocation](/MonoMac/Documentation/Binding_New_Objective-C_Types).
 
 Major Namespaces
 ----------------
@@ -129,7 +129,7 @@ Although this namespace provides bindings for the underlying Objective-C Foundat
 1.  Instead of dealing with [NSString](http://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/doc/uid/TP40003744) and [NSArray](http://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/NSArray.html#//apple_ref/doc/uid/TP40003620) the runtime instead exposes these as C# [string](http://www.go-mono.com/docs/index.aspx?link=T:System.String) and strongly typed [" array](http://www.go-mono.com/docs/index.aspx?link=T:System.Array)s throughout the API.
 2.  Various helper APIs are exposed here to allow developers to bind third party Objective-C APIs, other OS X APIs or APIs that are not currently bound by MonoMac.
 
-For more details on binding APIs see the [MonoMac Binding Generator](/MonoMac/Documentation/Binding_New_Objective-C_Types "MonoMac/Documentation/Binding New Objective-C Types") section.
+For more details on binding APIs see the [MonoMac Binding Generator](/MonoMac/Documentation/Binding_New_Objective-C_Types) section.
 
 #### NSObject
 
@@ -172,7 +172,7 @@ The discussion in the next few sections is not necessary for users that are crea
 
 ### Types
 
-Where it made sense, we exposed C# types instead of low-level MonoMac.Foundation types to the C# universe. This means that [the API uses the C# "string" type instead of NSString](/MonoMac/Documentation/API_Design/NSString "MonoMac/Documentation/API Design/NSString") and it uses strongly typed C# arrays instead of exposing NSArray.
+Where it made sense, we exposed C# types instead of low-level MonoMac.Foundation types to the C# universe. This means that [the API uses the C# "string" type instead of NSString](/MonoMac/Documentation/API_Design/NSString) and it uses strongly typed C# arrays instead of exposing NSArray.
 
 Additionally, instead of exposing CGRect, CGPoint and CGSize from the CoreGraphics API, we replaced those with the System.Drawing implementations RectF, PointF and SizeF as they would help developers preserve existing OpenGL code that uses OpenTK.
 
@@ -509,18 +509,18 @@ Most classes in MonoMac that derive from NSObject will expose constructors speci
 
 The constructors are used as follows:
 
-**public Foo (IntPtr handle)**
+**public Foo (IntPtr handle)**<br/>
 This constructor is used to instantiate your class when the runtime needs to map your class to an unmanaged class. This happens when you load a XIB/NIB file. The Objective-C runtime will have at this point created an object in the unmanaged world and this constructor will be called to initialize the managed side.
 
 Typically all you need to do is call the base constructor with the handle parameter and in your body do any initialization that is necessary.
 
-**public Foo ()**
+**public Foo ()**<br/>
 This is the default constructor for a class, and in MonoTouch provided classes this initializes the MonoTouch.Foundation.NSObject class and all of the classes in between and at the end chains this to Objective's C "init" method on the class.
 
-**public Foo (NSObjectFlag x)**
+**public Foo (NSObjectFlag x)**<br/>
 This constructor is used to initialize the instance, but prevent the code from calling the Objective-C "init" method at the end. You typically use this when you already have registered for initialization (when you use [Export] on your constructor) or when you have already done your initialization through another mean.
 
-**public Foo (NSCoder coder)**
+**public Foo (NSCoder coder)**<br/>
 This constructor is provided for the cases where the object is being initialized from an NSCoding instance. For more information see Apple's \<a href="[http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/Archiving/index.html#//apple_ref/doc/uid/10000047i](http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/Archiving/index.html#//apple_ref/doc/uid/10000047i)" title="[http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/Archiving/index.html#//apple_ref/doc/uid/10000047i](http://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/Archiving/index.html#//apple_ref/doc/uid/10000047i)" class="external"\>Archives and Serialization Programming Guide\</a\>.
 
 The MonoMac API design does not raise Objective-C exceptions as C# exceptions. The design enforces that no garbage be sent to the Objective-C world in the first place and that any exceptions that must be produced are produced by the binding itself before invalid data is ever passed to the Objective-C world.
@@ -568,7 +568,7 @@ But disposing an object in C# does not mean that the object will necessarily be 
 
 You should call Dispose when you need Mono to get rid of your object. A possible use case is when Mono has no knowledge that your NSObject is actually holding a reference to an important resource like memory, or an information pool. In those cases, you should call Dispose to immediately release the reference to the memory, instead of waiting for Mono to perform a garbage collection cycle.
 
-Internally, when Mono creates [NSString references from C# strings](/MonoMac/Documentation/API_Design/NSString "MonoMac/Documentation/API Design/NSString"), it will dispose them immediately to reduce the amount of work that the garbage collector has to do. The fewer objects around to deal with, the faster the GC will run.
+Internally, when Mono creates [NSString references from C# strings](/MonoMac/Documentation/API_Design/NSString), it will dispose them immediately to reduce the amount of work that the garbage collector has to do. The fewer objects around to deal with, the faster the GC will run.
 
 ### When to Keep References to Objects
 

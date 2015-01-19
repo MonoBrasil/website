@@ -28,7 +28,7 @@ The "parallel" environment this document details is installed from either source
 
 ### Source Tarballs
 
-First, download the [Released Source Mono Tarballs](http://go-mono.com/sources-stable/). This document is concerned only with *mono*, *libgdiplus*, *gtk-sharp-1.x*, *gtk-sharp-2.x*, and *mono-tools*.
+First, download the [Released Source Mono Tarballs](http://download.mono-project.com/sources/mono/). This document is concerned only with *mono*, *libgdiplus*, *gtk-sharp-1.x*, *gtk-sharp-2.x*, and *mono-tools*.
 
 ### Source from Version Control (Mono Git)
 
@@ -186,5 +186,5 @@ This may lead you to think that the configure scripts of your programs are buggy
 Common Problems
 ---------------
 
-Sometimes, the wrapper shell scripts for system installed programs to not write out the full path to mono. For example, while in this new environment, you might execute /usr/bin/monodevelop. Sometimes, this results in the **new** mono being used. If this is the case, you should report a bug to the developer. Likewise, even if you specify a path like /opt/mono/bin/monodevelop, the old mono may be used.
+Sometimes, the wrapper shell scripts for system installed programs do not write out the full path to mono. For example, while in this new environment, you might execute /usr/bin/monodevelop. Sometimes, this results in the **new** mono being used. If this is the case, you should report a bug to the developer. Likewise, even if you specify a path like /opt/mono/bin/monodevelop, the old mono may be used.
 

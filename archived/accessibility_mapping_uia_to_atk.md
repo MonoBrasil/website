@@ -30,7 +30,7 @@ UIA Provider
 
 A page to show the mapping being used between UI Automation and ATK.
 
-For an overview of the architecture see the [Architecture](/Accessibility:_Architecture "Accessibility: Architecture") page.
+For an overview of the architecture see the [Architecture](/Accessibility:_Architecture) page.
 
 ### UIA Control Types
 
@@ -48,7 +48,7 @@ Notes
 
 [Button](http://msdn.microsoft.com/en-us/library/ms742153.aspx)
 
-Almost finished
+Almost finished<br/>
 (Calvin & Andres)
 
 [IInvokeProvider](http://msdn.microsoft.com/en-us/library/system.windows.automation.provider.iinvokeprovider.aspx) [IToggleProvider](http://msdn.microsoft.com/en-us/library/system.windows.automation.provider.itoggleprovider.aspx)
@@ -103,7 +103,7 @@ ATK_ROLE_ENTRY
 
 [Group](http://msdn.microsoft.com/en-us/library/ms742689.aspx)
 
-In Progress
+In Progress<br/>
 (Mike)
 
 [IExpandCollapseProvider](http://msdn.microsoft.com/en-us/library/system.windows.automation.provider.iexpandcollapseprovider.aspx)
@@ -134,7 +134,7 @@ ATK_ROLE_IMAGE
 
 [List](http://msdn.microsoft.com/en-us/library/ms742462.aspx)
 
-In Progress
+In Progress<br/>
 (Calvin)
 
 ATK_ROLE_LIST
@@ -167,7 +167,7 @@ ATK_ROLE_MENU_ITEM
 
 [Pane](http://msdn.microsoft.com/en-us/library/ms749129.aspx)
 
-In Progress
+In Progress<br/>
 (Calvin)
 
 [ITransformProvider](http://msdn.microsoft.com/en-us/library/system.windows.automation.provider.itransformprovider.aspx) [IDockProvider](http://msdn.microsoft.com/en-us/library/system.windows.automation.provider.idockprovider.aspx)
@@ -190,7 +190,7 @@ ATK_ROLE_RADIO_BUTTON
 
 [ScrollBar](http://msdn.microsoft.com/en-us/library/ms743712.aspx)
 
-In Progress
+In Progress<br/>
 (Mike)
 
 [IRangeValueProvider](http://msdn.microsoft.com/en-us/library/system.windows.automation.provider.irangevalueprovider.aspx)
@@ -300,5 +300,5 @@ The following is a list of UIA Provider interfaces to be used in the table above
 See also
 --------
 
-Interesting as well are the [MWF-\>UIA mappings](/Accessibility:_Control_Status "Accessibility: Control Status") and the [GTK-\>Gail-\>ATK-\>UIA mappings+candidates](/archived/accessibility_uiaatkbridge/#case-study-gtk "Accessibility: UiaAtkBridge").
+Interesting as well are the [MWF-\>UIA mappings](/Accessibility:_Control_Status) and the [GTK-\>Gail-\>ATK-\>UIA mappings+candidates](/archived/accessibility_uiaatkbridge/#case-study-gtk).
 

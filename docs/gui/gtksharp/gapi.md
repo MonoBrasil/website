@@ -2,12 +2,13 @@
 title: GAPI
 redirect_from:
   - /GAPI/
+  - /_GAPI/
 ---
 
 GAPI Overview
 -------------
 
-The GAPI tools are distributed with [Gtk#](http://gtk-sharp.sourceforge.net/). The tools make it easy create and maintain managed bindings to native libraries which utilize [glib](http://developer.gnome.org/doc/API/glib/) and [GObject](http://developer.gnome.org/doc/API/2.0/gobject/). Some examples of libraries currently bound using the GAPI tools include [Gtk](http://www.gtk.org/), [Atk](http://developer.gnome.org/doc/API/2.0/atk/atk.html), [Pango](http://www.pango.org/), [Gdk](http://developer.gnome.org/doc/API/gdk/), [libgnome](http://developer.gnome.org/doc/API/2.0/libgnome/), [libgnomeui](http://developer.gnome.org/doc/API/2.0/libgnomeui/),[libgnomecanvas](http://directory.fsf.org/graphics/misc/libgnomecanvas.html), and [GtkGLArea](/archived/gtkglarea "GtkGLArea").
+The GAPI tools are distributed with [Gtk#](http://gtk-sharp.sourceforge.net/). The tools make it easy create and maintain managed bindings to native libraries which utilize [glib](http://developer.gnome.org/doc/API/glib/) and [GObject](http://developer.gnome.org/doc/API/2.0/gobject/). Some examples of libraries currently bound using the GAPI tools include [Gtk](http://www.gtk.org/), [Atk](http://developer.gnome.org/doc/API/2.0/atk/atk.html), [Pango](http://www.pango.org/), [Gdk](http://developer.gnome.org/doc/API/gdk/), [libgnome](http://developer.gnome.org/doc/API/2.0/libgnome/), [libgnomeui](http://developer.gnome.org/doc/API/2.0/libgnomeui/),[libgnomecanvas](http://directory.fsf.org/graphics/misc/libgnomecanvas.html), and [GtkGLArea](/archived/gtkglarea).
 
 There are 3 primary tools provided by GAPI:
 

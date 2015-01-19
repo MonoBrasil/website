@@ -1,5 +1,5 @@
 ---
-title: Interop with Native Libraries
+title: Interoperação com Bibliotecas Nativas
 redirect_from:
   - /Interop_with_Native_Libraries/
   - /Dllimport/
@@ -7,32 +7,32 @@ redirect_from:
   - /PInvoke/
 ---
 
-Introduction
-============
+Introdução
+==========
 
-The [Common Language Infrastructure](http://www.ecma-international.org/publications/standards/ecma-335.htm) (CLI) is designed to make it "easy" to interoperate with existing code. In principal, all you need to do is create a [DllImport](http://docs.go-mono.com/index.aspx?link=T:System.Runtime.InteropServices.DllImportAttribute) function declaration for the existing code to invoke, and the runtime will handle the rest. For example:
+O [Common Language Infrastructure](http://www.ecma-international.org/publications/standards/ecma-335.htm) (CLI) foi projetado para "facilitar" a interoperação com código existente. Basicamente, tudo que você precisa fazer é criar um declaração de importação de função marcada com o atributo [DllImport](http://docs.go-mono.com/index.aspx?link=T:System.Runtime.InteropServices.DllImportAttribute) para o código existente a ser chamado, e o ambiente de execução cuida do resto. Por exemplo:
 
 ``` csharp
  [DllImport ("libc.so")]
  private static extern int getpid ();
 ```
 
-Please note that most of the classes and enumerations mentioned in this document reside in the [System.Runtime.InteropServices](http://docs.go-mono.com/index.aspx?link=N:System.Runtime.InteropServices) namespace.
+Note que a maioria das classes e enumerações mencionadas neste documento residem no espaço de nomes (namespace) [System.Runtime.InteropServices](http://docs.go-mono.com/index.aspx?link=N:System.Runtime.InteropServices).
 
-The above C# function declaration would invoke the POSIX **getpid**(2) system call on platforms that have the `libc.so` library. If `libc.so` exists but doesn't have the **getpid** export, an [EntryPointNotFoundException](http://docs.go-mono.com/index.aspx?link=T:System.EntryPointNotFoundException) exception is thrown. If `libc.so` can't be loaded, a [DllNotFoundException](http://docs.go-mono.com/index.aspx?link=T:System.DllNotFoundException) exception is thrown. Simple. Straightforward. What could be easier?
+A declaração da função C# acima chamaria a system call POSIX **getpid**(2) nas plataformas que tem um biblioteca `libc.so`. Se `libc.so` existe mas não contém uma exportação denominada **getpid**, uma exceção do tipo [EntryPointNotFoundException](http://docs.go-mono.com/index.aspx?link=T:System.EntryPointNotFoundException) é arremessada. Se a biblioteca `libc.so` não puder ser carregada, uma exceção do tipo [DllNotFoundException](http://docs.go-mono.com/index.aspx?link=T:System.DllNotFoundException) é arremessada. Simples. Direta. O que poderia ser mais fácil?
 
-There are three problems with this:
+Temos três problemas com isso:
 
-1.  [Specifying the library in the DllImport statement](#library-handling).
-2.  [Determining what function to actually invoke](#invoking-unmanaged-code).
-3.  [Passing parameters](#marshaling); most existing code is far more complex. Strings will need to be passed, structures may need to be passed, memory management practices will become involved...
+1.  [Especificar a biblioteca com o atributo DLLImport](#localização-e-carga-de-bibliotecas-nativas).
+2.  [Determinar que função deve ser efetivamente chamadas](#invoking-unmanaged-code).
+3.  [Passar parâmetros na forma apropriada](#marshaling); a maior parte do código existente é muito mais complexo. Cadeias de caracteres (strings) precisam ser convertidas e passadas, estruturas podem precisar ser passadas, práticas de gerenciamento de memória podem ser envolvidas...
 
-Existing code is a complex beast, and the interop layer needs to support this complexity.
+Código existente é um monstro complexo, e a camada de interoperação precisa atender essa complexidade.
 
-Library Handling
-================
+Localização e Carga de Bibliotecas Nativas
+==========================================
 
-How does the runtime find the library specified in the **DllImport** attribute? This question is inherently platform specific.
+Como o ambiente de execução acha a biblioteca especificada no atributo **DllImport**? Essa é uma questão inerentemente específica a cada plataforma.
 
 Windows DLL Search Path
 -----------------------
@@ -101,9 +101,9 @@ Library Names
 
 Knowing where to look for the library is only half of the problem. Knowing what library to load is the other half.
 
-Different platforms have different naming conventions. Windows platforms append `.DLL` to the library name, such as `OLE32.DLL`. Linux platforms use a `lib` prefix and a `.so` suffix<sup>[1](#lib-name-note)</sup>. Mac OS X platforms have a `lib` prefix and a `.dylib` suffix, unless they're a Framework, in which case they're a directory and things get more complicated.
+Different platforms have different naming conventions. Windows platforms append `.DLL` to the library name, such as `OLE32.DLL`. Linux platforms use a `lib` prefix and a `.so` suffix<sup>(see Note 1)</sup>. Mac OS X platforms have a `lib` prefix and a `.dylib` suffix, unless they're a Framework, in which case they're a directory and things get more complicated.
 
-<span id="lib-name-note">Note 1:</span> Strictly speaking, Unix shared libraries are typically versioned, and the version number follows the `.so` suffix. For example, `libfreetype.so.6.3.3` is a fully versioned library. Versioning throws a "wrench" into the works, and is best dealt with through Mono's \<dllmap/\> mechanism; see below for details.
+Note 1: Strictly speaking, Unix shared libraries are typically versioned, and the version number follows the `.so` suffix. For example, `libfreetype.so.6.3.3` is a fully versioned library. Versioning throws a "wrench" into the works, and is best dealt with through Mono's \<dllmap/\> mechanism; see below for details.
 
 If you have control over the library name, keep the above naming conventions in mind and don't use a platform-specific library name in the **DllImport** statement. Instead, just use the library name itself, without any prefixes or suffixes, and rely on the runtime to find the appropriate library at runtime. For example:
 
@@ -145,7 +145,7 @@ Invoking Unmanaged Code
 
 As far as managed code is concerned, unmanaged code is invoked merely by invoking a method with an associated **DllImport** attribute. The CLI runtime must do more work to actually invoke the unmanaged code.
 
-In principal, this is a straightforward process. The library specified in the **DllImport** attribute is loaded, as described above. Then, the specified function is looked up (via [GetProcAddress()](http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dllproc/base/getprocaddress.asp) or **dlsym**(3)). Finally, the function is invoked.
+In principle, this is a straightforward process. The library specified in the **DllImport** attribute is loaded, as described above. Then, the specified function is looked up (via [GetProcAddress()](http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dllproc/base/getprocaddress.asp) or **dlsym**(3)). Finally, the function is invoked.
 
 But what string is used for the function lookup (in `GetProcAddress()` or **dlopen**(3))? By default, the name of the managed code method is used, which is why [getpid() in the above example](#introduction) invokes **getpid**(2) from the C library.
 
@@ -159,11 +159,11 @@ Calling convention can be specified in C code by using the `__stdcall` and `__cd
 
 Does having the default CallingConvention vary between platforms cause portability problems? Yes. All the more reason to write as much code as possible as managed code, avoiding the whole P/Invoke/marshaling conundrum in the first place.
 
-If you need to invoke C++ code, you have two choices: (1) make the C++ function `extern "C"`, treat it as a C function,
-and make sure that it uses a known calling convention; (2) don't make the function `extern "C"`, but make sure it uses
+If you need to invoke C++ code, you have two choices: (1) make the C++ function `extern "C"`, treat it as a C function,<br/>
+and make sure that it uses a known calling convention; (2) don't make the function `extern "C"`, but make sure it uses<br/>
 a known calling convention. If you use option (2), you'll need to set the
-[DllImport.EntryPoint](http://docs.go-mono.com/index.aspx?link=F:System.Runtime.InteropServices.DllImportAttribute.EntryPoint)
-field to the C++ mangled function name, such as `_Z6getpidv`. You can retrieve the mangled name through your compiler's
+[DllImport.EntryPoint](http://docs.go-mono.com/index.aspx?link=F:System.Runtime.InteropServices.DllImportAttribute.EntryPoint)<br/>
+field to the C++ mangled function name, such as `_Z6getpidv`. You can retrieve the mangled name through your compiler's<br/>
 binary tools, such as `OBJDUMP.EXE` or **nm**(1). Note that C++ mangled names are *highly* compiler specific, and will:
 
 1.  make your .NET assembly platform specific (you'll need a different assembly for each different platform);
@@ -394,12 +394,12 @@ Perhaps in the future the [CharSet](http://docs.go-mono.com/index.aspx?link=T:Sy
 
 ### More Control
 
-Using the **DllImport** attribute works if you want to control all the strings in a function, but what if you need more
-control? You would need more control if a string is a member of a structure, or if the function uses multiple different
+Using the **DllImport** attribute works if you want to control all the strings in a function, but what if you need more<br/>
+control? You would need more control if a string is a member of a structure, or if the function uses multiple different<br/>
 types of strings as parameters. In these circumstances, the **MarshalAs** attribute can be used, setting the
-[Value](http://docs.go-mono.com/index.aspx?link=P:System.Runtime.InteropServices.MarshalAsAttribute.Value) property
+[Value](http://docs.go-mono.com/index.aspx?link=P:System.Runtime.InteropServices.MarshalAsAttribute.Value) property<br/>
 (which is set in the constructor) to a value from the
-[UnmanagedType](http://docs.go-mono.com/index.aspx?link=T:System.Runtime.InteropServices.UnmanagedType) enumeration.
+[UnmanagedType](http://docs.go-mono.com/index.aspx?link=T:System.Runtime.InteropServices.UnmanagedType) enumeration.<br/>
 For example:
 
 ``` csharp
@@ -476,7 +476,7 @@ Class and Structure Marshaling
 
 The conceptual steps that occur to marshal classes and structures is detailed above, in the [Memory Boundaries](#memory-boundaries) section.
 
-The principal difference between class and structure marshaling is which, if any, of conceptual steps actually occurs.
+The main difference between class and structure marshaling is which ones, if any, of the conceptual steps actually occur.
 
 ### Class Marshaling
 
@@ -1549,28 +1549,28 @@ Note that some portions of this document are quotations from others; the origina
 Revision History
 ================
 
- August 15, 2005
+ August 15, 2005<br/>
 Added char\*\* marshalling tutorial
 
- April 12, 2005
+ April 12, 2005<br/>
 Moved into the wiki.
 
- February 3, 2005
+ February 3, 2005<br/>
 Revised navigation menu to show 1st and 2nd level links. Documented Mono's __Internal library name extension for importing symbols from within the loading program. Added Marshaling Arrays section, which clarifies array marshaling issues and includes the David Jesk commentary (which shouldn't have been in the "Avoiding Marshaling" section anyway). Added boolean marshaling information. Added Marshaling Embedded Strings information. Minor corrections, additional links to blogs and articles.
 
- June 14, 2004
+ June 14, 2004<br/>
 Added Properly Disposing of Resources section; changed title to clarify document's intent.
 
- June 6, 2004
+ June 6, 2004<br/>
 Mono properly frees the memory of class-typed return values now. Remove comment stating otherwise. (miguel)
 
- May 15, 2004
+ May 15, 2004<br/>
 Added Exception Propogation section, updated Mono's .config file handling; spelling correction: s/marshalling/marshaling/g (this matches MSDN spelling conventions).
 
- March 20, 2004
+ March 20, 2004<br/>
 Added Memory Boundaries section based on suggestions from Marcus; formatting changes.
 
- August-October 2003
+ August-October 2003<br/>
 Initial Version.
 
 
