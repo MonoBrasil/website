@@ -48,7 +48,7 @@ To enable installation on older Ubuntu releases such as Ubuntu 12.04 and Ubuntu 
 echo "deb http://download.mono-project.com/repo/debian wheezy-libtiff-compat main" | sudo tee -a /etc/apt/sources.list.d/mono-xamarin.list
 ```
 
-CentOS, Fedora, and derivatives
+CentOS 7, Fedora 19, and derivatives
 -------------------------------
 
 Add the Mono Project GPG signing key and the package repository **in a root shell** with:
@@ -101,6 +101,29 @@ If for some reason you want to pin an older version of Mono rather than updating
 These snapshots will cease receiving updates as soon as the next major Mono version gets uploaded - for example, as soon as Mono 3.12 gets uploaded, 3.10 will never receive updates.
 
 On RPM distributions, force the package version in your package manager - all older versions are published in the YUM metadata and should be available.
+
+Security updates for older releases
+-----------------------------------
+
+Due to our repository management software, we are unable to directly offer security fixes in our standard reposijtories for any version of Mono other than the latest.
+
+If you are running a snapshot version, and want security support, add a repository as appropriate from the list below:
+
+``` bash
+echo "deb http://download.mono-project.com/repo/debian 38-security main" | sudo tee -a /etc/apt/sources.list.d/mono-xamarin-security.list
+```
+
+``` bash
+echo "deb http://download.mono-project.com/repo/debian 310-security main" | sudo tee -a /etc/apt/sources.list.d/mono-xamarin-security.list
+```
+
+``` bash
+echo "deb http://download.mono-project.com/repo/debian 312-security main" | sudo tee -a /etc/apt/sources.list.d/mono-xamarin-security.list
+```
+
+``` bash
+echo "deb http://download.mono-project.com/repo/debian 40-security main" | sudo tee -a /etc/apt/sources.list.d/mono-xamarin-security.list
+```
 
 Alpha update channel
 --------------------

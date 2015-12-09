@@ -68,7 +68,7 @@ Uma implementação de terceiros existe para o PowerShell:
 Comentários
 -----------
 
-Sinta-se livre para [nos enviar seus comentários e questões](http://www.go-mono.com/contact/) sobre este caminho.
+Sinta-se livre para [nos enviar seus comentários e questões](/community/) sobre este caminho.
 
 Histórico
 ---------------
