@@ -6,12 +6,12 @@ redirect_from:
 ---
 
 {% capture compileNote %}
-This describes how to compile and install Mono from its source code. If you are only interested in running Mono, you probably want to install Mono from packages, which have been tested. See the [download page](/download/) for packages.
+Este documento descreve como compilar e instalar o Mono a partir do seu código fonte. Se você está apenas interessado em rodar o Mono, você terá que instalar o Mono a partir dos pacotes, os quais foram testados. Verifique os pacotes na [página de downloads](/download/).
 {% endcapture %}
 {% include note.html type='info' message=compileNote %}
 
-Take a look at these guides for compiling Mono on different platforms:
+Dê uma olhada nos guias para compilar o Mono em diferentes plataformas:
 
-- [Compiling Mono on Mac OS X](/docs/compiling-mono/mac/)
-- [Compiling Mono on Linux](/docs/compiling-mono/linux/)
-- [Compiling Mono on Windows](/docs/compiling-mono/windows/)
+- [Compilando Mono no Mac OS X](/docs/compiling-mono/mac/)
+- [Compilando Mono no Linux](/docs/compiling-mono/linux/)
+- [Compilando Mono no Windows](/docs/compiling-mono/windows/)

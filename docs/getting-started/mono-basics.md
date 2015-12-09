@@ -4,12 +4,12 @@ redirect_from:
   - /Mono_Basics/
 ---
 
-After you get Mono installed, it's probably a good idea to run a quick Hello World program to make sure everything is set up properly. That way you'll know that your Mono is working before you try writing or running a more complex application.
+Depois que seu Mono tiver sido instalado, provavelmente  é uma boa ideia executar um rápido programa "Hello World" para certificar-se de que tudo está configurado corretamente. Essa é a forma para você saber se seu Mono está funcionando antes de você escrever ou rodar aplicativos mais complexos.
 
-Console Hello World
+Hello World no Console 
 -------------------
 
-To test the most basic functionality available, copy the following code into a file called hello.cs.
+Para testar as funcionalidades básicas disponíveis, copie o seguinte código dentro de um arquivo chamado hello.cs.
 
 ``` csharp
 using System;
@@ -23,36 +23,36 @@ public class HelloWorld
 }
 ```
 
-To compile, use mcs:
+Para compilar, use o mcs:
 
     mcs hello.cs
 
-The compiler will create "hello.exe", which you can run using:
+O compilador irá criar "hello.exe", no qual você pode rodar usando:
 
     mono hello.exe
 
-The program should run and output:
+O programa irá rodar e exibir como saída:
 
 ``` bash
 Hello Mono World
 ```
 
-HTTPS connections
+Conexões HTTPS
 -----------------
 
-To make sure HTTPS connections work, download and run the [tlstest](https://raw.github.com/mono/mono/master/mcs/class/Mono.Security/Test/tools/tlstest/tlstest.cs) tool (needs Mono >= 3.4.0).
+Para ter certeza de que as conexões HTTPS funcionam, baixe  e rode a ferramenta  [tlstest](https://raw.github.com/mono/mono/master/mcs/class/Mono.Security/Test/tools/tlstest/tlstest.cs) (a versão do Mono precisa ser maior ou igual à 3.4.0).
 
 ``` bash
 mcs tlstest.cs /r:System.dll /r:Mono.Security.dll
 mono tlstest.exe https://www.nuget.org
 ```
 
-The program prints an error if something is wrong.
+O programa exibirá um erro se houver alguma coisa errada.
 
-Winforms Hello World
+Hello World em Winforms 
 --------------------
 
-The following program tests writing a Winforms application.
+Escrevendo uma aplicação de teste em Winforms.
 
 ``` csharp
 using System;
@@ -72,20 +72,20 @@ public class HelloWorld : Form
 }
 ```
 
-To compile, use mcs with the -pkg option to tell the compiler to pull in the Winforms libraries:
+Para compilar, use o mcs com a opção -pkg para informar ao compilador para invocar as bibliotecas do Winforms.
 
     mcs hello.cs -pkg:dotnet
 
-The compiler will create "hello.exe", which you can run using:
+O compilador irá criar "hello.exe", no qual você pode rodar usando:
 
     mono hello.exe
 
-NOTE: on Mac OS X you'll have to wait around a minute the very first time you run this command.
+NOTA: No MAC OS X você terá que esperar torno de um minuto na primeira vez em que você executar este comando.
 
-ASP.Net Hello World
+Hello World em ASP.Net 
 -------------------
 
-Create a text file with the name hello.aspx and the content:
+Crie um arquivo de texto com o nome hello.aspx com esse conteúdo:
 
 ``` csharp
 <%@ Page Language="C#" %>
@@ -97,18 +97,18 @@ Create a text file with the name hello.aspx and the content:
 </asp:calendar>
 ```
 
-Then run the xsp4 command from that directory:
+Então rode o comando xsp4 a partir desse diretório:
 
 ``` bash
 xsp4 --port 9000
 ```
 
-Use a web browser to contact [http://localhost:9000/hello.aspx](http://localhost:9000/hello.aspx)
+Use o navegador para acessar [http://localhost:9000/hello.aspx](http://localhost:9000/hello.aspx)
 
-Gtk# Hello World
+Hello World em Gtk# 
 -----------------
 
-The following program tests writing a Gtk# application.
+Escrevendo uma aplicação de teste em Gtk#.
 
 ``` csharp
 using Gtk;
@@ -128,10 +128,10 @@ class Hello
 }
 ```
 
-To compile, use mcs with the -pkg option to tell the compiler to pull in the Gtk# libraries (note that Gtk# must be installed on your system for this to work):
+Para compilar, use o mcs com a opção -pkg para informar ao compilador para invocar as bibliotecas do Gtk# (O Gtk# precisa ser instalado no seu sistema para que isso funcione):
 
     mcs hello.cs -pkg:gtk-sharp-2.0
 
-The compiler will create "hello.exe", which you can run using:
+O compilador irá criar "hello.exe", no qual você pode rodar usando:
 
     mono hello.exe
