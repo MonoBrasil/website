@@ -30,7 +30,7 @@ We use four open source licenses:
 
 Mono is available to be licensed commercially if the LGPL/GPL/X11 combination is not suitable for you. [Xamarin](http://xamarin.com/) offers [commercial licensing](http://xamarin.com/licensing) options to redistribute Mono under non-LGPL terms. If your organization intends to redistribute software which embeds or bundles Mono, but is unable to comply with the terms of GNU LGPL v2, the Ultimate Edition may be right for you.
 
-For other licensing options, [contact us](http://www.go-mono.com/contact/).
+For other licensing options, [contact us](https://xamarin.com/contact-us).
 
 ### Why are the class libraries licensed under the MIT X11 license?
 
@@ -50,7 +50,7 @@ For example, if you manufacture a device where the end user is not able to do an
 
 Or if you ship an application that requires to statically link the Mono runtime and you are not able to provide the object code to relink Mono, you must obtain a commercial license from Xamarin.
 
-Use our [Contact](http://www.go-mono.com/contact/) form with the information about your needs to discuss this.
+Use our [Contact](hhttps://xamarin.com/contact-us) form with the information about your needs to discuss this.
 
 ### I would like to contribute code to Mono under a particular license. What licenses will you accept?
 
@@ -127,7 +127,9 @@ Old Background
 
 This contains some old information that we are keeping here for the sake of finding it for future reference. The information below is now superseded by Microsoft's announcement on using the Community Promise for the ECMA CLI and C#.
 
- Jim Miller at Microsoft has made a statement on the patents covering ISO/ECMA, (he is one of the inventors listed in the patent): [here](http://web.archive.org/web/20030424174805/http://mailserver.di.unipi.it/pipermail/dotnet-sscli/msg00218.html). Microsoft's letter to ECMA is [here](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma%20PATENT/ECMA-334%20&%20335/2001ga-123%20&%202002ga-003.pdf).
+Jim Miller at Microsoft has made a statement on the patents covering ISO/ECMA, (he is one of the inventors listed in the patent): [here](http://web.archive.org/web/20030424174805/http://mailserver.di.unipi.it/pipermail/dotnet-sscli/msg00218.html).
+
+Microsoft's letter to ECMA is [here](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma%20PATENT/Patent%20statements%20ok/ECMA-335%204th%20edition%20Microsoft%20patent%20statement.pdf) for ECMA335 and [here](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma%20PATENT/Patent%20statements%20ok/ECMA-334%20Microsoft%20and%20Hewlett%20Packard%20patent%20statements.pdf) for ECMA334.
 
 Credits
 -------

@@ -24,14 +24,14 @@ redirect_from:
       <div class="panel content active" id="download-mac">
         <h3>O Mono para Mac OS X está disponível como um Mac Package (.pkg)</h3>
         <p>Por favor procure no <a href="/docs/getting-started/install/mac"> guia de instalação</a> maiores informações sobre como intalar e configurar o ambiente do Mono no Mac.</p>
-        <p><i>O MDK package é para desenvolvedores.</i></p>
+        <p><i>Este pacote é para desenvolvedores.</i></p>
         <div>
-          <a href="{{ site.data.latestrelease.mono_mac_url }}" class="button radius"><i class="fa fa-download"></i> Baixar o Mono MDK</a>
+          <a href="{{ site.data.latestrelease.mono_mac_url }}" class="button radius"><i class="fa fa-download"></i> Baixar o Mono 32-bit<</a>
         </div>
-        <h3>Mono Preview package for El Capitan (OS X 10.11)</h3>
-        <p>We are offering a preliminary support for the upcoming version of OS X.</p>
+        <h3>Prévia do Mono para Mac OS X Universal (32 &amp; 64 bit)</h3>
+        <p>Este pacote preliminar contém ambas as versões de 32 e 64 bits do Mono para OS X.</p>
         <div>
-          <a href="http://download.mono-project.com/archive/4.2.0/macos-10-x86/MonoFramework-MDK-4.2.0.macos10.xamarin.x86.pkg" class="button radius"><i class="fa fa-download"></i> Download Mono MDK (El Capitan Preview)</a>
+          <a href="{{ site.data.betarelease.mono_mac64_url }}" class="button radius"><i class="fa fa-download"></i> Baixar o Mono Universal Installer</a>
         </div>
       </div>
       <div class="panel content" id="download-lin">
@@ -42,7 +42,7 @@ redirect_from:
           <p>Estes pacotes são construídos, testados e distribuidos pela Xamarin. Use estes se você quiser usar a versão estável oficial do Mono.</p>
           <ul>
             <li><a href="/docs/getting-started/install/linux/#debian-ubuntu-and-derivatives">Debian, Ubuntu, and derivatives</a></li>
-            <li><a href="/docs/getting-started/install/linux/#centos-fedora-and-derivatives">CentOS, Fedora, and derivatives</a></li>
+            <li><a href="/docs/getting-started/install/linux/#centos-7-fedora-19-and-derivatives">CentOS, Fedora, and derivatives</a></li>
             <li><a href="/docs/getting-started/install/linux/#opensuse-and-sles">openSUSE and SLES</a></li>
           </ul>
         </div>
@@ -51,8 +51,9 @@ redirect_from:
         <div>
           <ul>
             <li><a href="https://www.archlinux.org/packages/extra/i686/mono/">Arch Linux</a></li>
-            <li><a href="/docs/getting-started/install/linux/centos/">CentOS</a></li>
+            <li><a href="https://apps.fedoraproject.org/packages/mono">CentOS EPEL</a></li>
             <li><a href="https://packages.debian.org/mono-complete">Debian</a></li>
+            <li><a href="https://apps.fedoraproject.org/packages/mono">Fedora</a></li>
             <li><a href="https://packages.gentoo.org/package/dev-lang/mono">Gentoo</a></li>
             <li><a href="https://software.opensuse.org/package/mono-complete">openSUSE</a></li>
             <li><a href="http://packages.ubuntu.com/mono-complete">Ubuntu</a></li>
@@ -67,8 +68,10 @@ redirect_from:
         <div>
           <p>Estes pacotes são desenvolvidos pela comunidade, os links estão aqui para sua conveniencia. Eles não são testados pela Xamarin, use por sua conta e risco.</p>
           <ul>
-            <li><a href="http://software.opensuse.org/download/package?project=home:tpokorra:mono&amp;package=mono-opt">Pacotes Mono para instalar no /opt para uso no CentOS, Fedora, Debian e Ubuntu</a></li>
-            <li><a href="http://software.opensuse.org/download/package?project=Mono:Factory&amp;package=mono-complete">Latest SUSE mono packages, part of the official "Factory" repository</a></li>
+            <li><a href="http://software.opensuse.org/download/package?project=home:tpokorra:mono&amp;package=mono-opt">Pacotes Mono para instalar no /opt para uso no Debian e Ubuntu</a></li>
+            <li><a href="https://copr.fedoraproject.org/coprs/tpokorra/mono-opt/">Pacotes Mono para instalar no /opt para uso no CentOS</a></li>
+            <li><a href="https://copr.fedoraproject.org/coprs/tpokorra/mono/">Pacotes Mono mais recentes para Fedora Rawhide e versões anteriores</a></li>
+            <li><a href="http://software.opensuse.org/download/package?project=Mono:Factory&amp;package=mono-complete">Pacotes Mono mais recentes para SUSE, parte do repositório oficial "Factory"</a></li>
           </ul>
         </div>
       </div>
@@ -77,7 +80,7 @@ redirect_from:
         <p>Por favor busque detalhes no <a href="/docs/getting-started/install/windows">guia de instalação</a> sobre como instalar e configurar o ambiente do Mono em Windows.</p>
         <p>Nota: você precisa de uma dll <a href="http://www.microsoft.com/en-us/download/details.aspx?id=40784">redistribuível do Visual C++ 2013 (x86)</a> instalada para rodar o Mono no Windows.</p>
         <div>
-          <a href="{{ site.data.latestrelease.mono_windows_url }}" class="button radius"><i class="fa fa-download"></i> Baixar o Mono</a>
+          <a href="{{ site.data.latestrelease.mono_windows_url }}" class="button radius"><i class="fa fa-download"></i> Baixar o Mono 32 bits</a>
         </div>
         <hr />
         <h5>GTK# para .NET</h5>
@@ -93,6 +96,10 @@ redirect_from:
 
     <h2>MonoDevelop IDE</h2>
     <p>Por favor visite o site do <a href="http://www.monodevelop.com/">MonoDevelop</a> para maiores detalhes sobre nossa IDE multi-plataforma.</p> 
+
+    <h2>Versões Antigas</h2>
+    <p>Para acessar versões mais antigas do Mono para OS X e Windows, veja o <a href="http://download.mono-project.com/archive/">histórico</a> do servidor de downloads. 
+	Para Linux verifique a secção "Accessing older releases" no <a href="/docs/getting-started/install/linux/#accessing-older-releases">guia de instalação</a>.</p>
 
     <h2>Atualizações Alpha e Beta</h2>
     <p>Para experimentar os pacotes preliminares, visite as páginas de download das versões <a href="/download/alpha/">alpha</a> ou <a href="/download/beta/">beta</a>.</p>

@@ -89,17 +89,7 @@ LDFLAGS=`pkg-config --libs mono-2`
 
 Para quem utiliza o Mono com versões anteriores à 2.8, utilize "**mono**" ao invés de "**mono-2**" nos comandos acima, uma vez que a versão ABI da biblioteca libmono foi alterada.
 
-No Windows você precisa gerar uma biblioteca de importação mono.dll através do seguinte arquivo:
-
-<http://github.com/mono/mono/blob/master/msvc/mono.def>
-
-e gerar o mono.lib com o seguinte comando:
-
-``` bash
-lib /nologo /def:mono.def /out:mono.lib /machine:x86
-```
-
-, assim atrelando a sua aplicação com o mono.lib.
+No Windows, dependendo da implementação de coletor de lixo (GC) a ser usada (Boehm ou [SGen](/docs/advanced/garbage-collector/sgen/)), você precisará linkar sua aplicação com mono-2.0.lib ou monosgen-2.0.lib.
 
 ### Inicializando o runtime do Mono
 
