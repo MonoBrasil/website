@@ -4,14 +4,14 @@ redirect_from:
   - /About_Mono/
   - /About/
   - /about/
-  - /Mono:About/
+  - /Mono%3AAbout/
   - /What_is_Mono/
   - /What_is_Mono%3F/
 ---
 
 Mono, a plataforma de código aberto de desenvolvimento baseada no framework .NET, permite aos desenvolvedores construir aplicações multi-plataforma com maior produtividade. A implementação .NET do Mono é baseada nas padronizações ECMA para o [C#](http://www.ecma-international.org/publications/standards/Ecma-334.htm) e o [Common Language Infrastructure](http://www.ecma-international.org/publications/standards/Ecma-335.htm).
 
-Apoiado anteriormente pela Novell e agora pela [Xamarin](http://xamarin.com/), o projeto Mono tem uma ativa e entusiástica comunidade de contribuidores. O Mono inclue ferramentas de desenvolvimento e a infraestrutura necessária para rodar aplicações .NET cliente e servidor.
+Apoiado anteriormente pela Novell, [Xamarin](http://xamarin.com/) e agora pela [Microsoft](http://www.microsoft.com) e pela [.NET Foundation](http://www.dotnetfoundation.org/), o projeto Mono tem uma ativa e entusiástica comunidade de contribuidores. O Mono inclue ferramentas de desenvolvimento e a infraestrutura necessária para rodar aplicações .NET cliente e servidor.
 
 Os Componentes
 --------------
@@ -22,7 +22,7 @@ Existem diversos componentes que forma o Mono:
 
 **[Runtime do Mono](/docs/advanced/runtime/)** - O runtime (ambiente de execução) implementa a Common Language Infrastructure (CLI) do ECMA. O runtime prove um compilador Just-in-Time (JIT), um compilador Ahead-of-Time (AOT), um carregador de bibliotecas, o coletor de lixo, o sistema de execução concorrente (threads) e funcionalidade de interoperabilidade com bibliotecas nativas.
 
-**Biblioteca de Classes Base** - A plataforma Mono provê um extenso conjunto de classes que fornece uma fundação sólida para construir aplicações. Estas classes são compatíveis com as classes do Framework .Net da Microsoft.
+**Biblioteca de Classes Base do .NET** - A plataforma Mono provê um extenso conjunto de classes que fornece uma fundação sólida para construir aplicações. Estas classes são compatíveis com as classes do Framework .Net da Microsoft.
 
 **Biblioteca de Classes do Mono** - O Mono também provê muitas classes que vão acima e além do que a Biblioteca de Classes Base fornecida pela Microsoft. Estes fornecem funcionalidade adicional utéis, especialmente para construir aplicações Linux. Alguns exemplos são de classes para Gtk+, arquivos Zipados, LDAP, OpenGL, Cairo, POSIX, etc.
 
@@ -42,7 +42,7 @@ Construa sua aplicação em uma implementação no padrão [ECMA](/docs/about-mo
 Rode aplicações [ASP.NET](/docs/web/aspnet/), [ADO.NET](/docs/database-access/adonet/), [Silverlight](/docs/web/moonlight/) e [Windows.Forms](/docs/gui/winforms/) sem recompilação.
 
 [Código Aberto, Software Livre](/docs/faq/licensing/)<br/>
-O runtime, compiladores, e bibliotecas do Mono são distribuidos sob licenças aprovadas pela OSI e estão disponíveis para licenciamento-dual.
+O runtime, compiladores, e bibliotecas do Mono são distribuidos sob a licença MIT.
 
 [Extensiva Cobertura Tecnológica](/docs/about-mono/plans/)<br/>
 Conexões nativas(bindings) e implementações gerenciadas de muitas bibliotecas e protocolos.
@@ -58,7 +58,7 @@ Existem muitos benefícios para quem escolhe o Mono para desenvolver suas aplica
 
 **Biblioteca de Classes Base** - Ter uma extensa biblioteca de classes provê milhares de classes prontas para aumentar a produtividade. Precisa de código de rede ou uma hashtable? Não precisa escrever a sua use a embutida na plataforma.
 
-**Multi-Platforma** - O Mono foi construido para ser multi-plataforma. O Mono roda em [Linux](/docs/about-mono/supported-platforms/linux/), [Microsoft Windows](/docs/getting-started/install/windows/), [Mac OS X](/docs/about-mono/supported-platforms/osx/), [BSD](/docs/about-mono/supported-platforms/bsd/), e [Sun Solaris](/docs/about-mono/supported-platforms/solaris/), [Nintendo Wii](/docs/about-mono/supported-platforms/wii/), [Sony PlayStation 3](/docs/about-mono/supported-platforms/playstation3/), [Apple iPhone](/docs/about-mono/supported-platforms/iphone/) e [Android](/docs/about-mono/supported-platforms/android/). Ele também roda em hardware [x86](/docs/about-mono/supported-platforms/x86/), [x86-64](/docs/about-mono/supported-platforms/amd64/), [IA64](/docs/about-mono/supported-platforms/ia64/), [PowerPC](/docs/about-mono/supported-platforms/powerpc/), [SPARC (32)](/docs/about-mono/supported-platforms/sparc/), [ARM](/docs/about-mono/supported-platforms/arm/), Alpha, [s390, s390x (32 and 64 bits)](/docs/about-mono/supported-platforms/s390/) e mais. Desenvolvendo em Mono a sua aplicação lhe permite rodar em praticamente qualquer computador existente.
+**Multi-Plataforma** - O Mono foi construido para ser multi-plataforma. O Mono roda em [Linux](/docs/about-mono/supported-platforms/linux/), [Microsoft Windows](/docs/getting-started/install/windows/), [Mac OS X](/docs/about-mono/supported-platforms/osx/), [BSD](/docs/about-mono/supported-platforms/bsd/), [Sun Solaris](/docs/about-mono/supported-platforms/solaris/), [Nintendo Wii](/docs/about-mono/supported-platforms/wii/), [Sony PlayStation 3](/docs/about-mono/supported-platforms/playstation3/), [Apple iPhone](/docs/about-mono/supported-platforms/iphone/) e [Android](/docs/about-mono/supported-platforms/android/). Ele também roda em hardware [x86](/docs/about-mono/supported-platforms/x86/), [x86-64](/docs/about-mono/supported-platforms/amd64/), [IA64](/docs/about-mono/supported-platforms/ia64/), [PowerPC](/docs/about-mono/supported-platforms/powerpc/), [SPARC (32)](/docs/about-mono/supported-platforms/sparc/), [ARM](/docs/about-mono/supported-platforms/arm/), Alpha, [s390, s390x (32 and 64 bits)](/docs/about-mono/supported-platforms/s390/) e mais. Desenvolvendo em Mono a sua aplicação lhe permite rodar em praticamente qualquer computador existente.
 
 **Common Language Runtime (CLR)** - O CLR permite escolher a linguagem de programação que melhor funciona para você, e poder interoperar com código escrito em qualquer outra linguagem CLR. Por exemplo, você pode escrever uma classe em C#, herdar dela em VB.Net, e usar em Eiffel ou F#. Você pode escrever o código para o Mono em uma [variedae de linguagens de programação](/docs/about-mono/languages/).
 

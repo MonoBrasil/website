@@ -1,7 +1,7 @@
 ---
 title: Mono.Cecil FAQ
 redirect_from:
-  - /Cecil:FAQ/
+  - /Cecil%3AFAQ/
 ---
 
 Agora que eu tenho a biblioteca, como posso usá-la ?

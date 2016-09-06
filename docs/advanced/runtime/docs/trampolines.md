@@ -1,7 +1,7 @@
 ---
 title: Trampolines
 redirect_from:
-  - /Mono:Runtime:Documentation:Trampolines/
+  - /Mono%3ARuntime%3ADocumentation%3ATrampolines/
 ---
 
  Trampolins são pequenos pedaços de código nativo, escritos à mão, 

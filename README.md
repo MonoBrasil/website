@@ -60,7 +60,7 @@ Para mudanças maiores, usar o editor web do GitHub não é muito conveniente. U
 
 Depois que você clonou o seu fork do repositório, rode os seguintes comandos:
  1. `bundle install` - baixa as bibliotecas necessárias ao Jekyll
- 2. `jekyll serve` - constroi o site e roda um servidor local na porta 4000
+ 2. `bundle exec jekyll serve` - constroi o site e roda um servidor local na porta 4000
 
 **Nota:** você pode adicionar a opção `--watch` ao executar `jekyll serve` para que o Jekyll monitore as mudanças de arquivo, o que significa que o site será reconstruido quand um arquivo é modificado.</br>
 **Nota 2:** em sistemas de arquivos sem diferenciação de maiúsculas/minúsculas como no Windows e Mac OS X você pode cair em laços infinitos de redirecionamento com algumas URLs. 

@@ -16,146 +16,167 @@ so you can submit your own ideas as well as apply for one from this list - but o
 
 You can use the following links to jump to sections that you're interested in:
 
-**[Other Ideas](#other-ideas)**<br/>
-Suggest your own ideas for a project
+**[MonoDevelop / Xamarin Studio IDE](#monodevelop--xamarin-studio-ide)**<br/>
+Help developers build applications by improving the cross-platform MonoDevelop / Xamarin Studio IDE
 
-**[Microsoft .NET and Mono integration](#microsoft-net-and-mono-integration)**<br/>
-Work on blending the worlds of open source .NET and Mono projects together
+* [Unit tests code coverage visualised inside MonoDevelop editor](#unit-tests-code-coverage-visualised-inside-monodevelop-editor)
+* [Visual Basic with Roslyn on Windows](#visual-basic-with-roslyn-on-windows)
+* [Debugging .fsx scripts in FSI](#debugging-fsx-scripts-in-fsi)
+* [Reuse MonoDevelop Roslyn compilation to perform compile](#reuse-monodevelop-roslyn-compilation-to-perform-compile)
+* [Support for Symbol Servers](#support-for-symbol-servers)
+* [Lambda support in debugger expression evaluator](#lambda-support-in-debugger-expression-evaluator)
+* [Debugging disassembled code could use C# decompiler to generate source](#debugging-disassembled-code-could-use-c-decompiler-to-generate-source)
+* [Syntax Highlighting Overhaul](#syntax-highlighting-overhaul)
+* [Improve Auto-Documentation System](#improve-auto-documentation-system)
+* [Overhaul MonoDevelop C/C++ addin](#overhaul-monodevelop-cc-addin)
 
 **[Compilers and Tools](#compilers-and-tools)**<br/>
 Work on Mono's tools and compilers
 
-**[MonoDevelop / Xamarin Studio IDE](#monodevelop--xamarin-studio-ide)**<br/>
-Help developers build applications by improving the cross-platform MonoDevelop / Xamarin Studio IDE
+* [Port ilasm to use IKVM.Reflection instead of PEAPI.](#port-ilasm-to-use-ikvmreflection-instead-of-peapi)
+* [A ccache-like tool for managed languages](#a-ccache-like-tool-for-managed-languages)
 
 **[Mono Runtime](#mono-runtime)**<br/>
 Improve the core Mono runtime and JIT
 
+* [Implement a LLDB plugin that can understands the mono runtime](#implement-a-lldb-plugin-that-can-understands-the-mono-runtime)
+* [Port mono to WinRT](#port-mono-to-winrt)
+* [Make FileStream async operation really async](#make-filestream-async-operation-really-async)
+* [JIT optimizations](#jit-optimizations)
+
+**[Microsoft .NET and Mono integration](#microsoft-net-and-mono-integration)**<br/>
+Work on blending the worlds of open source .NET and Mono projects together
+
+* [Import reference source System.Web* assemblies](#import-reference-source-systemweb-assemblies)
+
 **[GTK# and Bindings](#gtk-and-bindings)**<br/>
 GTK# Core, Bindings and Applications
+
+* [Urho3d Game Engine Improvements](#urho3d-game-engine-improvements)
+* [CppSharp / Continue Mono/.NET bindings for Qt](#cppsharp--continue-mononet-bindings-for-qt)
+
+**[Other Ideas](#other-ideas)**<br/>
+Suggest your own ideas for a project
 
 **[Contacting the Mono Team](#contacting-the-mono-team)**<br/>
 How to get in touch with us and ask questions
 
-Other Ideas
-===========
+## MonoDevelop / Xamarin Studio IDE
 
-If a project is not listed here, but you think you have a great idea, feel free to
-[contact the Mono team, mentors and org admins](#contacting-the-mono-team) to discuss or suggest your own project ideas.
+### Unit tests code coverage visualised inside MonoDevelop editor
 
-Over the past years we have picked projects that were not listed here because they were great ideas, and we had students
-that were passionate about those projects. In the end, most of these projects were a success.
+**Complexity:** Easy
 
-Do not be afraid to pick up a project that would be interesting and also help the Mono universe.
+The Mono runtime supports outputting an xml file containing information about which lines were executed. This could be used to collect code coverage information when running unit tests, which could be visualized in the text editor.
 
-You can find some additional ideas on the [MonkeySquare ideas page](http://monkeysquare.org/gsoc/projects), and on the
-[Gnome ideas page](https://live.gnome.org/SummerOfCode2013/Ideas) (Mono-based projects in Gnome: Banshee, Blam, Tasque,
-Tomboy, GBrainy, Mistelix, F-Spot, ChronoJump, SparkleShare, LongoMatch).
+This project would involve adding support to the MonoDevelop.UnitTesting AddIn to collect code coverage information when running tests, and to display that information visually in the editor.
 
-Microsoft .NET and Mono Integration
-===================================
+**Deliverables**: Add support to MonoDevelop to collect code coverage information when running tests, and display it visually in the text editor.
 
-Microsoft open sourced large chunks of code this year:
+**Mentors:** Iain Holmes
 
-- ReferenceSource: the source code for the class libraries of .NET as it ships on Windows
-- CoreFX: a fresh take on the distribution of the class libraries for a new, slimmer, smaller runtime
-- CoreCLR: their C/C++ based runtime, JIT, GC for running on Mac, Linux and Windows
-- Roslyn: Microsoft's C# and VB compiler as a service
-- CodeContracts: the tools needed to instrument your code
+### Visual Basic with Roslyn on Windows
 
-We are tracking various ideas in the [.NET Integration in Mono](https://trello.com/b/vRPTMfdz/net-framework-integration-into-mono) trello board.
+**Complexity:** Medium
 
-Port CoreCLR Features to Mono
------------------------------
+Overhaul the VB language binding addin or rewrite it from scratch and
+make use of the full VB .NET support in Roslyn (without mono-basic). The CSharpBinding addin is a good starting point and reference.
+
+Main goals:
+
+* Compatibility with Visual Studio projects
+* Panels for editing all project options
+* Updated project templates
+* Integration into the MonoDevelop type system
+* Code completion ported from Roslyn EditorFeatures
+* Other standard IDE language integration (code folding, document outline, symbol tooltips, Find References, etc)
+
+Optional:
+
+* Mac/Linux support (depends on MSBuild and Roslyn compilers being included in Mono)
+* VB.NET source analysis
+* VB.NET refactorings ported from Roslyn EditorFeatures
+* Semantic highlighting
+
+**Deliverables**: VB.NET support in MonoDevelop with updated project options and templates, and Roslyn-based code completion
+
+**Mentors:** Vsevolod Kukol
+
+### Debugging .fsx scripts in FSI
 
 **Complexity:** Hard
 
-We are interested in allowing Mono to optionally use components of the CoreCLR, like their Garbage Collector or their JIT, or extend Mono to support some of the features that the CoreCLR JIT now has, and Mono lacks (like the recently introduced Microsoft SIMD support).
+It would be nice to be able to set breakpoints in F# scripts and debug them when running in F# interactive (FSI) inside MonoDevelop.
 
-Your proposal should identify the CoreCLR features you wish to port and explain why it is beneficial to port them.
+To implement this, we would need to:
 
-**Deliverables**: Port a CoreCLR feature of your choice to the Mono runtime.
+1. Attach the debugger to the FSI process that is running inside MonoDevelop. The Mono runtime has limited and untested support for attaching the debugger to a running process that was launched in "debuggable" mode, so perhaps we could attach and detach it. Alternatively, perhaps we run FSI in the debugger and simply leave it always attached.
 
-**Mentors:** Ludovic Henry
+2. Implement a debugging frontend that only debugs code in the dynamic assembly generated by FSI, while ignoring code in the FSI process itself.
 
-Integrate Reference Sources code into Mono
-------------------------------------------
+3. Modify the F# add-in for MonoDevelop to have a "Debug in F# interactive" command when the active document is an `.fsx` file.
 
-**Complexity:** Medium
+**Deliverables**: Working "Debug in F# interactive" command in MonoDevelop.
 
-While the Mono team has replaced some parts of the Mono class libraries with code from Microsoft, we have found that some of the interesting bits are either tied to the Windows platform, is not portable, or will not work with Mono’s multi-profile facades.
+**Mentors:** Alex Corrado
 
-We are interested in students that would like to take on the challenge of porting existing ReferenceSource code to Linux, Mac, Unix, Android, iOS and making it available to both Mono and the CoreFX efforts.
-
-The things that we are interested in porting are tracked in [this Trello board](https://trello.com/b/vRPTMfdz/net-framework-integration-into-mono).
-
-Your proposal should identify the features you wish to port and explain why it is beneficial to port them.
-
-**Deliverables**: Port Reference Sources code of your choice to Mono.
-
-**Mentors:** Ludovic Henry
-
-Compilers and Tools
-===================
-
-CppSharp | Improve C++ inline code / default arguments bindings
----------------------------------------------------------------
+### Reuse MonoDevelop Roslyn compilation to perform compile
 
 **Complexity:** Medium
 
-As part of this task you'll need to extend CppSharp's support for binding C++ functions/methods with default arguments and handling of inlined code.
+MonoDevelop now uses the Roslyn compiler for its type system, and keeps fully updated Roslyn compilations in memory. It should be possible when building for the build engine to connect back the the IDE and use the existing Roslyn compilations for code generation, in the same way that Visual Studio does. This will greatly improve compile time during development.
 
-Both of these features rely on extending the AST (Abstract Syntax Tree) layer in CppSharp to support expressions and statement nodes.
+This will require implementing the MSBuild ICscHostObject interface in the MonoDevelop build system and having the Csc build task delegate the code generation to the in-process compiler.
 
-To get an idea of the information provided by Clang's AST you can view it's class reference for [Expression](http://clang.llvm.org/doxygen/classclang_1_1Expr.html) and [Statement](http://clang.llvm.org/doxygen/classclang_1_1Stmt.html). For the default arguments work only a subset of the expression nodes will be needed so it might be a good way to start with those. The rest can be done iteratively as they are needed.
+**Deliverables**: Fully implement ICscHostObject in the MonoDevelop build system, including tests.
 
-With this information available, the generator can then be extended to take advantage of it.
+**Mentors:** David Karlas
 
-We already have some work-in-progress support for default arguments but it's done in a flawed way. It does a mix of string parsing and parser hacks to figure out the types of the default arguments. It'd be nice to replace it with something more robust based by making the translation of C++ types to C# at the generator level with support from the information in the AST.
+### Support for Symbol Servers
 
-Inlined code is currently problematic because it's not exported in the shared object when compiled, so there's no way to call it from C#. This can even happen when the code is not marked with the inline keyword (the compiler uses some heuristics to classify some functions/methods as inline). This could be improved with the AST information because we could convert a subset of C++ to C#. Code considered as inline is usually not very complicated so we should be able to solve a big chunk of this problem with something relatively simple.
+**Complexity:** Hard
 
-The main tasks would be:
+Support for downloading symbol packages from symbol servers on demand and using them in the debugger. This is primarily useful for NuGet.
 
-1. Add expressions/statements support to the managed AST layer
-2. Improve the C++ parsing layer to bind Clang's AST to the one defined in 1.
-3. Extend the binding generator backends to rely on the information from the managed AST and generate better code
+Making this work will require implementing support for handling debugger symbols on the client (IDE) side instead of the debugger agent.
 
-Related code:
+**Deliverables**: Support for downloading symbol packages and using them when debugging apps.
 
-<https://github.com/mono/CppSharp/blob/master/src/CppParser/Parser.cpp#L2559>
+**Mentors:** David Karlas
 
-<https://github.com/mono/CppSharp/blob/master/src/AST/Expression.cs>
+### Lambda support in debugger expression evaluator
 
-Feel free to get in touch with @tritao if you're interested in this and would like more guidance.
+**Complexity:** Hard
 
-**Mentors:** João Matos
+Support for lambdas in the MonoDevelop debugger's expression evaluator, used in the Immediate pad. This will require compiling the lambdas locally and uploading them to the debuggee.
 
-MonoDevelop / Xamarin Studio IDE
-================================
+Roslyn has [support for compiling expressions](https://github.com/dotnet/roslyn/tree/master/src/ExpressionEvaluator) that could be used as a basis for this.
 
-Overhaul MonoDevelop C/C++ addin
---------------------------------
+**Deliverables**: Support for lambdas in the Immediate pad.
+
+**Mentors:** David Karlas
+
+### Debugging disassembled code could use C# decompiler to generate source
 
 **Complexity:** Medium
 
-The MonoDevelop C/C++ addin has been unmaintained for some time. We would like to move it to a standalone addin so it is more easily maintainable, and improve its core project model to use with MSBuild or CMake.
+MonoDevelop already has IL->C# logic, and the debugger already supports stepping into methods without code. These two components have to be combined to give a user the option to see C# code instead of IL when stepping into methods without source code.
 
-There are many other aspects of the addin that could be improved, such as:
+**Deliverables:** Ability to see C# instead of IL when debugging methods without source code.
 
-- improving the code completion using libclang instead of CTags
-- adding refactoring support
-- improving the GDB debugger addin or switching to LLDB
-- making the addin usable on Windows with msvc, clang and/or mingw32 gcc.
+**Mentors:** David Karlas, Jeff Stedfast
 
-Your proposal can include any of that you find interesting and feel can be realistically be completed in addition to the core tasks.
+### Syntax Highlighting Overhaul
 
-**Deliverables:** a standalone C/C++ addin that uses MSBuild or CMake, along with other improvements of your choosing
+**Complexity:** Medium
 
-**Mentors:** Michael Hutchinson, João Matos
+The syntax highlighting in MonoDevelop is done by defining a grammar as xml file to colorize tokens. Some highlightings are extended with hand written code. The highlighting system can be made faster (maybe with an on the fly compiler approach), more extensible (atm it’s difficult to write semantic highlightings) and more scaleable . You will first need to understand how our highlighting files are defined and how the semantic highlighting currently works. After that a new implementation approach needs to be implemented. One of our current drawbacks are that regular expressions could be integrated better - for example span begin/end constructs aren’t atm regular. In fact everything should be based on regular expressions.
 
-Improve Auto-Documentation System
----------------------------------
+**Deliverables**: An extensible syntax highlighting system that reads our xml files or a similar format. It should be scalable even for large files (lazy analysis) and much faster than the current implementation (speed tests included).
+
+**Mentors:** Mike Krüger
+
+### Improve Auto-Documentation System
 
 **Complexity:** Medium
 
@@ -171,275 +192,206 @@ Your proposal should describe the approaches you intend to use to fix the issue,
 
 **Mentors:** Mike Krüger
 
-Port NRefactory 5 Actions/Issues to NRefactory 6
-------------------------------------------------
+### Overhaul MonoDevelop C/C++ addin
 
 **Complexity:** Medium
 
-NRefactory is the library used by MonoDevelop for parsing, analysis and refactoring of C# code. The upcoming NR6 is completely rebased on the Microsoft Roslyn compiler, but many of the analysis features have not yet been ported. Your task would be to port a number of Code Actions and Code Issues of your choice.
+The [MonoDevelop C/C++ addin](https://github.com/mhutch/cbinding) was substantially updated as part of last year's Summer of Code. However, there are still many things that could be done to improve it!
 
-**Deliverables**: Port the Code Actions and Code issues listed in your proposal to NR6
+* improving the code completion and adding a test suite
+* adding refactoring support
+* improving the GDB debugger addin or switching to LLDB
+* making the addin usable on Windows with msvc, clang and/or mingw32 gcc.
 
-**Mentors:** Mike Krüger
+Your proposal can include any of that you find interesting and feel can be realistically be completed in addition to the core tasks.
 
-MD Class Diagrams
------------------
+**Deliverables:** a set of improvements to the C/C++ addin of your choosing, to be specified in your proposal
 
-**Complexity:** Medium
+**Mentors:** mhutch
 
-Addin to generate UML-like class diagrams
+## Compilers and Tools
 
-Creating an addin for MonoDevelop to generate UML style class diagrams would give developers an easy way to view class structure and relationships.
-
-This project is ideal for a student interested in code documentation and code design.
-
-Your proposal should include what form you think the class diagrams will take, as well as your intended method of implementing the solution.
-
-**Deliverables**: A MonoDevelop addin for generating class diagrams.
-
-**Mentors:** Michael Hutchinson
-
-Adding Version Control Backends
--------------------------------
-
-**Complexity:** Easy
-
-MonoDevelop has support for a plugging new Version Control systems. Currently, Subversion and Git support is implemented.
-
-Community versions of TFS and HG exist, so implementing those are a really low priority.
-
-Having additional systems would add diversity to the options developers have when they want IDE support for Version Control.
-
-This is an ideal project for a student interested in version control integration and version control system bindings.
-
-Your proposal should describe the approaches you intend to use to implement the support, your experience with the chosen system(s).
-
-**Deliverables**: Add support for other version control systems in self-contained addins.
-
-**Mentors:** Marius Ungureanu
-
-Syntax Highlighting Overhaul
-----------------------------
+### Port ilasm to use IKVM.Reflection instead of PEAPI
 
 **Complexity:** Medium
 
-The syntax highlighting in MonoDevelop is done by defining a grammar as xml file to colorize tokens. Some highlightings are extended with hand written code. The highlighting system can be made faster (maybe with an on the fly compiler approach), more extensible (atm it’s difficult to write semantic highlightings) and more scaleable . You will first need to understand how our highlighting files are defined and how the semantic highlighting currently works. After that a new implementation approach needs to be implemented. One of our current drawbacks are that regular expressions could be integrated better - for example span begin/end constructs aren’t atm regular. In fact everything should be based on regular expressions.
+Port ilasm, the IL assembler, to use IKVM.Reflection as its code emission backend instead of PEAPI. This will require extending IKVM.Reflection to support the advanced metadata that ilasm supports.
 
-**Deliverables**: An extensible syntax highlighting system that reads our xml files or a similar format. It should be scalable even for large files (lazy analysis) and much faster than the current implementation (speed tests included).
+**Deliverables:** ilasm emitting code using IKVM.Reflection instead of PEAPI, and passing all tests.
 
-**Mentors:** Mike Krüger
+**Mentors:** Marek Safar
 
-Debugger Tasks window support
------------------------------
-
-**Complexity:** Medium
-
-Since async and await keywords were introduced, tasks have become crucial part of development process. With the Tasks window, a user will be able to easily see current task state (Scheduled, Executing, Waiting or Deadlocked). More information: <https://msdn.microsoft.com/en-us/library/dd998369.aspx>
-
-**Deliverables:** Tasks window implemented in MonoDevelop.
-
-**Mentors:** David Karlas
-
-Debugging disassembled code could use C# decompiler to generate source
-----------------------------------------------------------------------
+### A ccache-like tool for managed languages
 
 **Complexity:** Medium
 
-MonoDevelop already has IL->C# logic, and the debugger already supports stepping into methods without code. These two components have to be combined to give a user the option to see C# code instead of IL when stepping into methods without source code.
+C-based languages (C/C++/Objective-C) have ccache to cache results of compilations to make rebuilds faster.
 
-**Deliverables:** Ability to see C# instead of IL when debugging methods without source code.
+It would be nice to have something similar for C#/VB/F#.
 
-**Mentors:** David Karlas, Jeff Stedfast
+This can be used as a starting point to identify the set of inputs for C#/VB:
+<https://github.com/dotnet/roslyn/blob/master/docs/compilers/Deterministic%20Inputs.md>
 
-Mono Runtime
-============
+ccache (for reference): <https://github.com/jrosdahl/ccache>
 
-Port mono to asm.js
--------------------
+**Deliverables**: a functional tool for C# that works on linux + mac, with a test suite, and is able to cache/lookup everything during a (re)build of the mono BCL.
 
-**Complexity:** Hard
+**Mentors:** Rolf Bjarne Kvinge
 
-asm.js is the new big thing in the web.
+## Mono Runtime
 
-Port mono to work on it. This project should be able to:
-
-- Get the mono runtime compiled with emscripten
-- Get a mono cross compiler that can target emscripten
-
-Mash everything together and get it to work. No threads or GC support for this is needed.
-
-**Deliverables:** A asm.js hello world running in a browser.
-
-**Mentors:** João Matos, Alexis Christoforides
-
-Add PortablePDB support into the Mono ecosystem
------------------------------------------------
-
-**Complexity:** Medium
-
-PortablePDB is the new debug format proposed by the Roslyn team.
-
-This project would introduce support for it over the Mono ecosystem. This includes:
-
-- The mono runtime needs to be able to parse it.
-- Cecil must be able to parse and write this format.
-- IKVM.Reflect must be able to write this format.
-- MCS must be able to generate this format.
-- SDB (mono's debugger) must be able to use it.
-- MonoDevelop can give a better debug experience by reading it.
-
-Each of those bullets is not enough for a single student over summer, but all of them are too much. So pick and choose which ones you want to do.
-
-**Deliverables:** One or more of the above bullet points.
-
-Resources:
-
-Specification: <https://github.com/dotnet/roslyn/blob/portable-pdb/docs/specs/PortablePdb-Metadata.md>
-
-Roslyn's generator: <https://github.com/dotnet/roslyn/tree/portable-pdb>
-
-Branch of CoreFX with the metadata writer for portable PDB:
-
-<https://github.com/dotnet/corefx/tree/dev/metadata/src/System.Reflection.Metadata>
-
-**Mentors:** João Matos, Alexis Christoforides
-
-Port mono to WinRT
-------------------
-
-**Complexity:** Hard
-
-WinRT is the runtime sandbox where Windows Store apps run in.
-
-Right now mono doesn't run on it.
-
-The goal of this project is to get the runtime to compile for WinRT and get
-a simple hello world APP working.
-
-**Deliverables:** A hello world running in the WinRT sandbox.
-
-**Mentors:** João Matos, Alexis Christoforides
-
-Implement a LLDB plugin that can understands the mono runtime
--------------------------------------------------------------
+### Implement a LLDB plugin that can understands the mono runtime
 
 **Complexity:** Hard
 
 LLDB support plugins and we should write one that exposes as much as possible of the runtime. A few ideas:
 
-- object layout, introspection and heap walking
-- unwinding and symbolifying managed methods
-- lookup line information for managed methods
-- pretty print all runtime structs
-- threadpool introspection?
+* object layout, introspection and heap walking
+* unwinding and symbolifying managed methods
+* lookup line information for managed methods
+* pretty print all runtime structs
+* threadpool introspection?
 
 **Deliverables:** One or more of the above bullet points.
 
 **Mentors:** João Matos, Alexis Christoforides
 
-Make the SGen garbage collector work independently of Mono
-----------------------------------------------------------
-
-**Complexity:** Medium
-
-We've begun work on making Mono's garbage collector, SGen, work independently of Mono, for embedding in other programming language implementations:
-
-  <https://github.com/schani/mono/tree/sgen-independence>
-  <https://github.com/schani/simple-sgen-client>
-
-It still needs a lot of polishing, documentation, and has to be brought into a state where it can be merged with Mono.  That includes doing benchmarking to make sure it doesn't regress in performance or memory usage.
-
-It also needs a nontrivial project to use it.  Ideally another free language implementation that needs a better GC.
-
-Your proposal should include how you plan to benchmark SGen, and some candidates for other languages to implement it in.
-
-**Deliverables**: SGen garbage collector successfully working with another free language implementation.
-
-**Mentors:** Mark Probst
-
-Port the coreclr GC to work on top of Mono
-------------------------------------------
+### Port mono to WinRT
 
 **Complexity:** Hard
 
-With the recent open sourcing of CoreCLR comes CoreCLR's garbage collector, which has a quite well definted interface. Porting this to work with mono would be a great student project.
+WinRT is the runtime sandbox that Windows Store apps run in.
 
-**Deliverables**: A working mono port of the CoreCLR garbage collector.
+Right now Mono doesn't run on it.
 
-**Mentors:** Mark Probst
+The goal of this project is to get the runtime to compile for WinRT and get
+a simple Hello World app working.
 
-Show Referring Objects in Debugger
-----------------------------------
+**Deliverables:** A Hello World app running in the WinRT sandbox.
 
-**Complexity:** Medium
+**Mentors:** João Matos, Alexis Christoforides
 
-IntelliJ's debugger has a feature "Show Referring Objects", which displays a list of all objects that reference a given object:
+### Make FileStream async operation really async
 
-  <http://blog.jetbrains.com/idea/2014/09/intellij-idea-14-eap-138-1980-1-is-out/>
+**Complexity:** Easy
 
-Wouldn't it be nice if the mono debugger had that feature, too?  SGen already has the functionality for internal debugging (it doesn't handle all states the heap can be in, but that can be arranged).
+We could use our already existing infrastructure used for Socket, to make FileStream BeginRead, BegrinWrite, etc. methods really async.
+They are right now simple their synchronous method counter part called enqueued on the ThreadPool. For example, `FileStream.BeginRead` is implemented as `Read.BeginInvoke (...)`
 
-There's two major components to this project--the runtime and debugger support to surface this information, and the UI elements to make that information human-readable.
+**Deliverables**: Properly async FileStream, passing Mono tests.
 
-Your proposal should include which components of the project you wish to work on, and how you plan on implementing your solution.
+**Mentors:** Ludovic Henry
 
-**Deliverables**: Mono runtime support to show referring objects, and some UI implementation of referring objects information.
-
-**Mentors:** David Karlas, Mark Probst
-
-Implement System.Numerics.Vectors
----------------------------------
+### JIT optimizations
 
 **Complexity:** Hard
 
-Implement the MS System.Numerics.Vectors SIMD library and include JIT support to hardware-accelerate it using SSE on x86/AMD64.
+There are a few JIT optimizations that we could profile from:
 
-**Deliverables:** Implement System.Numerics.Vectors and JIT support on x86 and/or AMD64.
+* type propagation. Right now we perform zero type propagation in the JIT, leading to a lot of missed opportunities.
 
-**Mentors:** Alexis Christoforides
+* delayed/iterated inlining & casting. Allow those to be performed after method-to-ir. This would allow us to do a TON of VERY profitable strength reduction.
 
-GTK# and Bindings
-==================
+**Deliverables**: Implementation of a JIT optimization from the above list, or another of your suggestion. Must pass all unit tests.
 
-CppSharp | Continue Mono/.NET bindings for Qt
----------------------------------------------
+**Mentors:** Rodrigo Kumpera
+
+## Microsoft .NET and Mono integration
+
+Microsoft open sourced large chunks of code the past couple of years:
+
+* ReferenceSource: the source code for the class libraries of .NET as it ships on Windows
+* CoreFX: a fresh take on the distribution of the class libraries for a new, slimmer, smaller runtime
+* CoreCLR: their C/C++ based runtime, JIT, GC for running on Mac, Linux and Windows
+* Roslyn: Microsoft's C# and VB compiler as a service
+* CodeContracts: the tools needed to instrument your code
+
+We are tracking various ideas in the [.NET Integration in Mono](https://trello.com/b/vRPTMfdz/net-framework-integration-into-mono) trello board.
+
+### Import reference source System.Web* assemblies
 
 **Complexity:** Medium
+
+Mono has its own implementation of the System.Web assemblies. Microsoft has open-sourced their Reference Source implementation. We would like to replace Mono's existing implementation with Reference Source in order to increase compatibility, and fix bugs and missing features..
+
+**Deliverables**: integrate the Reference Source System.Web.* assemblies into Mono, passing Mono test suite on Windows and Unix.
+
+**Mentors:** Marek Safar
+
+## GTK# and Bindings
+
+### Urho3d Game Engine Improvements
+
+**Complexity:** Hard
+
+The [UrhoSharp](https://github.com/xamarin/urho) binding makes the [Urho3D](http://urho3d.github.io) game engine accessible from C#, F# and other .NET languages.
+
+Improvements to Urho3D will directly benefit UrhoSharp users. This is an open-ended project idea; you should pick a specific project for your proposal.
+
+Examples of possible projects include:
+
+* [Vulkan](https://www.khronos.org/vulkan) rendering backend
+* [Metal](https://developer.apple.com/metal) rendering backend
+* Impostor system
+* Procedural texture generation
+* Water or sky simulation
+
+NOTE: Contributions must follow the Urho3D contribution rules, and you should confirm with the Urho3D maintainers that they will be willing to merge the feature.
+
+**Deliverables**: Add a feature of your choice to the Urho3D engine, as specified in your proposal.
+
+**Mentors:** Miguel de Icaza
+
+### CppSharp | Continue Mono/.NET bindings for Qt
+
+**Complexity:** Hard
 
 As part of this task you’ll need to continue the bindings effort for the Qt framework so that it can be used with Mono/.NET languages such as C#, similar to the existing bindings of GTK# for GTK+.
 
-Qt, while an excellent development platform, has been notorious for its lack of bindings for many languages. The reason is that it's written in C++ and does not have a C API. This means that the task involves using CppSharp to generate the C# code. A large part of the work has been completed in the [QtSharp](https://github.com/ddobrev/QtSharp) project.
+QtSharp has reached alpha status and it needs the final improvements to make it a complete product. The necessary work can be broken down into five categories:
 
-Most of the task involves contribution to CppSharp itself because as the generator it does the overwhelming majority of the work. In particular, QtSharp needs the following features to be present in CppSharp:
+* Type maps for basic types – mostly because of the relatively new support for wrapping templates, QtSharp still only has a type map for QString ↔ string. Many other basic type maps are necessary for an optimal coding experience.
+Deliverables: The following type maps: QList<>, QVector<> ↔ List<>; QMap<,>, QHash<,> ↔ Dictionary<,>; and QChar<> ↔ char;
 
-1. Support for instantiated templates (non-instantiated templates are impossible to support save for entirely rewriting them in C#);
-2. A map between managed objects and their unmanaged counterparts – if we call in C# a method returning a pointer, subsequent calls to that method must return the same managed object rather than create a new one. Therefore we need to keep a map with the key a pointer and the value its managed representation so that we can get the same managed object each time. When an unmanaged object is deleted, we must remove its entry from this map;
-3. Support for dependencies between wrapped modules – this feature is partially done. It has to mirror the dependencies between the unmanaged libraries in the managed side. That is, as QtGui depends on QtCore, the wrapper of QtGui must depend on QtCore, otherwise the binding cannot have the types it needs.
+* Qt Quick support –  enables writing of Qt Quick applications using C#.
+Deliverables: the ability to include QML files in the application (an integrated in Visual Studio/MonoDevelop editor is not included, for now external editors such as Qt Creator will have to be used) and working interaction between C# and QML (property changes and emitting of signals in QML must call the corresponding C# code);
 
-Besides that major part, the task involves a few Qt specifics. Some of them are already done, such as generating XML documentation by parsing the documentaion of Qt. So this part is mostly about creating type maps: mapping common Qt types to common CLI ones. The most important examples would be:
+* Documentation package – online and off-line documentation for QtSharp.
+Deliverables: A compressed directory containing a complete DOxygen documentation package for QtSharp. The documentation itself is generated as XML code comments which DOxygen then takes from the source files and uses a configuration file to generate the package;
 
-1. QList<>, QVector<> ↔ List<>;
-2. QMap<,>, QHash<,> ↔ Dictionary<,>;
-3. QChar<> ↔ char;
+* Binaries – users must be able to download binaries for each platform QtSharp currently supports, namely all three major desktop platforms – Windows, Linux and OS X.
+Deliverables: Build scripts to produce and upload Qt# binaries;
 
-Some cases, such as QFile(Info) ↔ File(Info) or QDir ↔ Directory(Info), need some more consideration. In some cases both have features their counterpart lacks, in other cases people would just prefer the Qt API. So the priority of this part goes to the most basic types as enumerated in the list above.
-
-The last part is testing and fixing any crashes or incorrect behaviour. Unit tests are especially welcome. A good starting point can be porting some of the Qt examples to C# and then checking if they behave the same way as their original counterparts.
+* Auto-memory management – this feature is deliberately last in the list because it may or may not be reasonable. The problem is that the only way to implement it is to use managed destructors to call their native counterparts, and the former are, in short, not guaranteed to be called. In long, each managed destructor (or finaliser) must take less than two seconds of execution time and all finalisers combined must take less than forty. If either condition fails, the VM terminates the process without calling the remaining finalisers (<https://blogs.msdn.microsoft.com/oldnewthing/20100809-00/?p=13203>, <http://blog.stephencleary.com/2009/08/finalizers-at-process-exit.html>) which would lead to leaks in native memory. On the other hand, if the bindings are correct, a finaliser would only take an instant so the time limit should be more than enough for all of them. Basically, it can be done but it really is a stretch of the capabilities of the VM, so what's certain is that this task must be left last – if implemented at all.
+Deliverables: Generation of managed destructors (finalisers) to call their native counterparts in order to free the memory allocated for the native part of wrapped objects.
 
 Related code:
 
 <https://github.com/mono/CppSharp>
-<https://github.com/ddobrev/QtSharp>
+<https://gitlab.com/ddobrev/QtSharp>
 <https://techbase.kde.org/Development/Languages/Qyoto> – obsolete bindings for Qt which can however give some ideas, for example for type maps
 
 Feel free to get in touch with @tritao if you’re interested in this and would like more guidance.
 
-**Deliverables**: Improve the QT bindings generator to the point that they can be used for a non-trivial QT sample written in idiomatic C#.
+**Deliverables:** Improve the Qt bindings generator to the point that they can be used for a non-trivial Qt sample written in idiomatic C#, with and without QML.
 
 **Mentors:** João Matos
 
-Contacting the Mono Team
-========================
+## Other Ideas
+
+If a project is not listed here, but you think you have a great idea, feel free to
+[contact the Mono team, mentors and org admins](#contacting-the-mono-team) to discuss or suggest your own project ideas.
+
+Over the past years we have picked projects that were not listed here because they were great ideas, and we had students
+that were passionate about those projects. In the end, most of these projects were a success.
+
+Do not be afraid to pick up a project that would be interesting and also help the Mono universe.
+
+You can find some additional ideas on the [MonkeySquare ideas page](http://monkeysquare.org/gsoc/projects), and on the
+[Gnome ideas page](https://live.gnome.org/SummerOfCode2013/Ideas) (Mono-based projects in Gnome: Banshee, Blam, Tasque,
+Tomboy, GBrainy, Mistelix, F-Spot, ChronoJump, SparkleShare, LongoMatch).
+
+## Contacting the Mono Team
 
 If you have questions or suggestions that you want to make in real-time and talk to a member of the team, please join us
 on IRC on the server "irc.gnome.org" in channel "#monosoc", "#monodev" or the "#mono" channel. Various mentors and
@@ -451,8 +403,7 @@ feedback about ideas and proposals. Community engagement is essential for a succ
 For any questions you may have about the program itself and to talk to the Mono GSoC admin, you can use
 [soc@xamarin.com](mailto:soc@xamarin.com).
 
-Mailing Lists
--------------
+### Mailing Lists
 
 [http://lists.ximian.com/mailman/listinfo/mono-devel-list](http://lists.ximian.com/mailman/listinfo/mono-devel-list)
 A mailing list dedicated to discussions about developing Mono itself, such as development of the runtime, class libraries, and related Mono projects.

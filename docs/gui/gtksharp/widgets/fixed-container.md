@@ -1,7 +1,7 @@
 ---
 title: "GtkSharp: Contêiner Fixed"
 redirect_from:
-  - /GtkSharp:_Fixed_Container/
+  - /GtkSharp%3A_Fixed_Container/
 ---
 
 O contêiner Fixed permite que você insira widgets em uma posição fixa dentro de sua janela, em relação ao canto superior esquerdo. A posição do widget pode ser modificada dinamicamente. Existem apenas algumas funções associadas com o widget Fixed:

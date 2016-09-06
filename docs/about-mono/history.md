@@ -88,4 +88,7 @@ Marcos Importantes
 
 -   30 de Junho: Lançado o Mono 1.0
 
+2016
+----
 
+-   Mono joins the .NET Foundation

@@ -48,12 +48,13 @@ To enable installation on older Ubuntu releases such as Ubuntu 12.04 and Ubuntu 
 echo "deb http://download.mono-project.com/repo/debian wheezy-libtiff-compat main" | sudo tee -a /etc/apt/sources.list.d/mono-xamarin.list
 ```
 
-CentOS 7, Fedora 19, and derivatives
+CentOS 7, Fedora 19 (and later), and derivatives
 -------------------------------
 
 Add the Mono Project GPG signing key and the package repository **in a root shell** with:
 
 ``` bash
+yum install yum-utils
 rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
 yum-config-manager --add-repo http://download.mono-project.com/repo/centos/
 ```
@@ -86,6 +87,8 @@ The package ***referenceassemblies-pcl*** should be installed for PCL compilatio
 
 The package ***ca-certificates-mono*** should be installed to get SSL certificates for HTTPS connections. Install this package if you run into trouble making HTTPS connections.
 
+The module ***mono-xsp4*** should be installed for running ASP.NET applications.
+
 Notes
 -----
 
@@ -105,7 +108,7 @@ On RPM distributions, force the package version in your package manager - all ol
 Security updates for older releases
 -----------------------------------
 
-Due to our repository management software, we are unable to directly offer security fixes in our standard reposijtories for any version of Mono other than the latest.
+Due to our repository management software, we are unable to directly offer security fixes in our standard repositories for any version of Mono other than the latest.
 
 If you are running a snapshot version, and want security support, add a repository as appropriate from the list below:
 
@@ -143,7 +146,11 @@ sudo apt-get update
 yum-config-manager --add-repo http://download.mono-project.com/repo/centos-alpha/
 ```
 
-(this repository URL is also valid for SUSE, add it via YaST)
+This repository URL is also valid for SUSE when added to YaST. This can be done using the [YaST GUI](https://en.opensuse.org/SDB:Add_package_repositories#YaST_software_repositories), or via [zypper](https://en.opensuse.org/SDB:Add_package_repositories#Zypper):
+
+``` bash
+zypper ar -f http://download.mono-project.com/repo/centos-alpha/ mono-project-alpha
+```
 
 Beta update channel
 --------------------
@@ -163,4 +170,8 @@ sudo apt-get update
 yum-config-manager --add-repo http://download.mono-project.com/repo/centos-beta/
 ```
 
-(this repository URL is also valid for SUSE, add it via YaST)
+This repository URL is also valid for SUSE when added to YaST. This can be done using the [YaST GUI](https://en.opensuse.org/SDB:Add_package_repositories#YaST_software_repositories), or via [zypper](https://en.opensuse.org/SDB:Add_package_repositories#Zypper):
+
+``` bash
+zypper ar -f http://download.mono-project.com/repo/centos-beta/ mono-project-beta
+```

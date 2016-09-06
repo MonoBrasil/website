@@ -1,7 +1,7 @@
 ---
 title: Mono Runtime Documentation
 redirect_from:
-  - /Mono:Runtime:Documentation/
+  - /Mono%3ARuntime%3ADocumentation/
 ---
 
 ### Mono Runtime Developer Documentation
@@ -16,13 +16,19 @@ This page currently contains links to the wiki-fied version of the runtime docum
 -   [Register allocation in the JIT](/docs/advanced/runtime/docs/register-allocation/)
 -   [JIT Intermediate Representation](/docs/advanced/runtime/docs/linear-ir/)
 -   [Generic Sharing](/docs/advanced/runtime/docs/generic-sharing/)
+-   [Generic sharing for valuetypes](/docs/advanced/runtime/docs/gsharedvt/)
 -   [Trampolines](/docs/advanced/runtime/docs/trampolines/)
+-   [Bitcode](/docs/advanced/runtime/docs/BITCODE/)
 -   [Porting the Engine](/docs/advanced/runtime/docs/mini-porting/)
 -   [Soft Debugger](/docs/advanced/runtime/docs/soft-debugger/)
 -   [LLVM Backend](/docs/advanced/runtime/docs/llvm-backend)
 -   [GDB Debugging Support (XDEBUG)](/docs/advanced/runtime/docs/xdebug/)
 -   [Other topics](/docs/advanced/runtime/docs/other/)
 -   [Glossary](/docs/advanced/runtime/docs/glossary)
+
+### RFCs
+
+-   [ASCII strings proposal](/docs/advanced/runtime/docs/ascii-strings/)
 
 ### Runtime guidelines
 
