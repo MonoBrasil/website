@@ -68,6 +68,8 @@ states:
 - Blocking: The current thread is executing code that won't touch managed memory, so it can be assumed to be suspended
 - Blocking and Suspended: The current thread finished executing blocking code but there was a pending suspend against it, it's waiting to be resumed
 
+![Coop state machine transition diagram](/docs/advanced/runtime/docs/coop-state-machine.png)
+
 In addition to those states, there are a number of transitions, that are used to move a thread from one state to another.
 
 ## mono-threads.c, mono-threads-coop.c, mono-threads-state-machine.c
@@ -145,15 +147,17 @@ Creates a C lexical scope. It causes a transition from Unsafe to Safe mode.
 Ok only under Unsafe mode.
 
 Great around a syscall that can block for a while (sockets, io).
-Managed pointers can leak into the GC Safe region. For example:
+Managed pointers *cannot* leak into the GC Safe region, as the GC might run while the thread is in this section, and move the referenced object around in the managed heap, leading to an invalid naked object pointer. For example, the following code is broken:
 
 ```c
 MonoArray *x;
 int res;
 MONO_PREPARE_BLOCKING
-res = read (1, mono_array_addr (x, char, 0), mono_array_length (x), 0);
+res = read (1, mono_array_addr (x, char, 0), mono_array_length (x), 0); // if a GC run while read is blocked in the OS, the object x might be moved, and x would then point to garbage, or worst, in the middle of another object. And whenever the OS would write into the buffer passed to read, it would override managed memory.
 MONO_FINISH_BLOCKING
 ```
+
+To safely use an object reference in a GC safe section, the object needs to be pinned in the managed heap with a GC handle, and you cannot access any ref field on this object.
 
 ### MONO_PREPARE_RESET_BLOCKING / MONO_FINISH_RESET_BLOCKING
 
@@ -165,13 +169,39 @@ This covers the case where code was expected to be in GC Safe mode but it now ne
 For example, the first call to a pinvoke will hit a trampoline that needs to move the runtime back into GC Unsafe
 mode before going around resolving it. Once the pinvoke is resolved, the previous mode must be restored.
 
-### MONO_TRY_BLOCKING / MONO_FINISH_TRY_BLOCKING
+## Managed object handles
 
-Creates a C lexical scope. It tries to transition the runtime to GC Safe mode. Resets to the previous mode on exit.
-Ok under any mode.
+Mono coop handles (`MonoObjectHandle`) allow native code to hold a
+handle to a managed object.  While currently raw pointers to managed
+objects in native code work without problems, they do so only because
+we use a conservative technique when the garbage collector is scanning
+the native stack: every object that looks like it may be referenced
+from the native stack is pinned.
 
-This coves the case where code must enter GC Safe mode but it doesn't know if it is already under it.
-Great to use around locks, that might be used in both modes.
+In the future, we want to move away from conservative scanning, and
+coop handles give native code a way to coordinate with the GC.
+
+TODO: Document this more
+
+### MONO_PREPARE_GC_CRITICAL_REGION / MONO_FINISH_GC_CRITICAL_REGION
+
+When a thread is in Unsafe mode and uses the coop handles, it may need
+to enter a *GC critical region* where it is manipulating the managed
+objects in a non-atomic manner and must not be interrupted by the GC.
+
+In a GC critical region:
+
+- The thread *must not* transition from Unsafe to Safe mode.
+- The thread *may* use `gc_handle_obj` to get a raw pointer to a managed object from a coop handle.
+
+GC critical regions may be nested (for example, you may enter a GC
+critical region and then call a function that again enters a GC
+critical region).
+
+#### MONO_REQ_GC_CRITICAL and MONO_REC_GC_NOT_CRITICAL
+
+In checked Mono builds, this pair of macros can be used to assert that
+the thread is (respectively, isn't) in a GC critical region.
 
 ## Debugging
 

@@ -1,7 +1,7 @@
 ---
 title: Linux
 redirect_from:
-  - /Mono:Linux/
+  - /Mono%3ALinux/
 ---
 
 O Mono é desenvolvimento principalmente na plataforma Linux e como maioria de seus usuários são usuários de Linux, essa é a plataforma que é melhor suportada.

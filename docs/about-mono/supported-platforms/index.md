@@ -3,7 +3,7 @@ title: Plataformas Suportadas
 redirect_from:
   - /Supported_Platforms/
   - /Platforms_Supported/
-  - /Template:Platforms_Supported/
+  - /Template%3APlatforms_Supported/
 ---
 
 O Mono possui suporte para a sistemas de 32 e 64 bits sobre uma série de arquiteturas, bem como 
@@ -14,12 +14,13 @@ vários sistemas operacionais.
 **Sistemas Operacionais**
 
 -   [Linux](/docs/about-mono/supported-platforms/linux/)
--   [Mac OS X](/docs/about-mono/supported-platforms/osx/), [iPhone OS](/docs/about-mono/supported-platforms/iphone/)
+-   [Mac OS X](/docs/about-mono/supported-platforms/osx/), [iOS, tvOS, watchOS](/docs/about-mono/supported-platforms/apple/)
 -   [Sun Solaris](/docs/about-mono/supported-platforms/solaris/)
 -   [BSD](/docs/about-mono/supported-platforms/bsd/) - OpenBSD, FreeBSD, NetBSD
 -   [Microsoft Windows](/docs/getting-started/install/windows/)
 -   [Nintendo Wii](/docs/about-mono/supported-platforms/wii/)
 -   [Sony PlayStation 3](/docs/about-mono/supported-platforms/playstation3/)
+-   [Sony PlayStation 4](/docs/about-mono/supported-platforms/playstation4/)
 
 ### Arquiteturas Suportadas
 

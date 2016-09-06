@@ -1,8 +1,8 @@
 ---
 title: "GtkSharp: Buttons"
 redirect_from:
-  - /GtkSharp:_Buttons/
-  - /GtkSharp:_Normal_Buttons/
+  - /GtkSharp%3A_Buttons/
+  - /GtkSharp%3A_Normal_Buttons/
 ---
 
 Normal Buttons
@@ -23,8 +23,6 @@ Button button1 = Button.NewWithMnemonic("Hello World");
 After creating a button using its argument-less constructor, it's then up to you to pack a label or pixmap into this new button. To do this, create a new box, and then pack your objects into this box using the usual [Gtk.Box.PackStart](http://docs.go-mono.com/index.aspx?link=M:Gtk.Box.PackStart), and then use [Gtk.Container.Add](http://docs.go-mono.com/index.aspx?link=M:Gtk.Container.Add) to pack the button into the box.
 
 Here's an example of creating a button with a image and a label in it. I've broken up the code to create a box from the rest so you can use it in your programs. There are further examples of using images later in the tutorial.
-
-[Image:buttons.png]
 
 ``` csharp
 // /samples/tutorial/buttons/buttons.cs - Gtk# Tutorial example

@@ -10,8 +10,6 @@ O assembly Mono.Data.SqliteClient contém um provedor de dados ADO.NET para o ba
 
 É importante observar que o SQLite possui uma peculiaridade importante: a célula da tabela de dados não registra a informação referente à qual era o tipo de dado que estava contido nela. Na versão atual do SQLite (versão 3), os dados são armazenados como long, double, string, ou como blob (de "Binary Large Object"), enquanto que na versão 2 do SQLite, todo dado é armazenado como string. Portanto, você precisa tomar cuidado para evitar o uso de casting de valores retornados pelo SQLite, sem antes verificar o tipo de dado retornado. Veja as observações abaixo sobre armazenamento de Data/Hora.
 
-(o último mantenedor do Mono.Data.SqliteClient foi [Josh Tauberer](http://razor.occams.info).)
-
 <table>
 <col width="100%" />
 <tbody>

@@ -1,7 +1,7 @@
 ---
 title: AMD64
 redirect_from:
-  - /Mono:AMD64/
+  - /Mono%3AAMD64/
   - /New_Custom_Page/
 ---
 
@@ -13,6 +13,5 @@ Supported operating systems:
 -   Solaris
 
 Related documentation:
-[AMD64 Application Binary Interface (ABI) Specification](http://www.x86-64.org/documentation/)
-[AMD64 Programming Documentation](http://www.amd.com/us-en/Processors/DevelopWithAMD/0,,30_2252_9044,00.html)
+[AMD64 Application Binary Interface (ABI) Specification](http://www.x86-64.org/documentation/), [AMD64 Programming Documentation](http://developer.amd.com/resources/documentation-articles/developer-guides-manuals/)
 

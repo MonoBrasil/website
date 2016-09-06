@@ -56,6 +56,8 @@ Uma vez que o Mono é reconhecidamente um poderoso framework, praticamente não 
 Embarcando o Ambiente de Execução
 =================================
 
+Cheque o [guia de referência](http://docs.go-mono.com/?link=root:/embed) para os detalhes da API.
+
 O processo de embarcar o runtime consiste em algumas etapas:
 
 -   Compilar o código e fazer o link com o runtime do Mono
@@ -108,7 +110,7 @@ domain = mono_jit_init (domain_name);
 Os comandos acima irão gerar um MonoDomain no qual o seu código será executado. domain_name é o nome do domínio da aplicação principal (main). Esta chamada irá inicializar a versão padrão do framework, a qual poderá ser 2.0 ou 4.0, dependendo da versão do Mono utilizada. Para especificar uma versão do framework, você pode fazer o seguinte:
 
 ``` c
-domain = mono_jit_init_version ("myapp", ""v2.0.50727);
+domain = mono_jit_init_version ("myapp", "v4.0.30319");
 ```
 
 A primeira coisa que você normalmente vai fazer é carregar o seu assembly e depois executá-lo:
@@ -598,6 +600,7 @@ Mono consumes a set of signals during execution that your applications will not 
 -   SIGFPE: caught so we can turn that into an exception
 -   SIGQUIT, SIGKILL to produce ExecutionEngineException.
 -   SIGSEGV: to produce NullReferenceExceptions
+-   SIGCHLD: to track the life-cycle of processes (notably System.Diagnostics.Process)
 
 One signal picked at startup time between SIGRTMIN and SIGRTMAX. The signal is picked up by finding a signal in that range which is set to SIG_DFL.
 
@@ -610,7 +613,7 @@ Currently Mono does not provide a mechanism for signal chaining, but one might b
 API Documentation
 =================
 
-See [here](http://go-mono.com/docs/index.aspx?tlink=root:/embed).
+Mono's [API Documentation](http://docs.go-mono.com/?link=root:/embed) covers the various APIs that you can invoke from your C/C++ application.
 
 Common Problems
 ===============

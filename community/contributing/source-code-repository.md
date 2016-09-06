@@ -38,7 +38,7 @@ Nós temos nosso conjunto de  [convenções de código](/community/contributing/
 
 ### Licenciamento do Código
 
-Se você está providenciando código para ser incorporado em algum módulo, esse código deve ser liberado sob uma licença X11. O código do Mono em sis está licenciado da seguinte forma: compiladores, bibliotecas de código e ferramentas em código gerenciado: X11; ambiente de execução: LGPL.
+Se você está providenciando código para ser incorporado em algum módulo, esse código deve ser liberado sob uma licença MIT.
 
 Se em dúvida, verifique com os mantenedores do módulo, ou mande um email para mono-devel-list@ximian.com.
 
@@ -65,6 +65,8 @@ But, if you're not the owner of the code, committing a rewrite without getting a
 ### Pull-Request Rules
 
 There are a few rules to follow before making a pull request on GitHub:
+
+-   Sign the [.NET Foundation CLA](https://cla2.dotnetfoundation.org)
 
 -   Always make sure to add meaningful commit logs
 
