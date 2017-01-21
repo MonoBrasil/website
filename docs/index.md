@@ -193,6 +193,7 @@ Caso você encontre erros ou pense que algo possa ser melhorado, apenas clique n
                 <li><a href="/docs/advanced/performance-tips/">Dicas de Performance</a></li>
                 <li><a href="/docs/advanced/safehandles/">SafeHandles</a></li>
                 <li><a href="/docs/advanced/sandbox/">Sandbox</a></li>
+                <li><a href="/docs/advanced/signals/">Signals and third-party crash reporters</a></li>
             </ul>
         </div>
     </dd>

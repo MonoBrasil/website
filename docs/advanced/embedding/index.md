@@ -131,7 +131,16 @@ Para executar o código, você precisará chamar um método no assembly, ou ent�
 retval = mono_jit_exec (domain, assembly, argc - 1, argv + 1);
 ```
 
-Certifique-se de que você sempre forneça um método Main() e execute-o com o `mono_jit_exec()` no início: isso configura algumas informações adicionais no domínio da aplicação, como por exemplo o assembly principal e o caminho base para carregamento. Você continuará podendo executar outros métodos mesmo depois que método Main() retornar.
+> `mono_jit_exec` espera o nome do arquivo com o assembly em argv[0], por isso ajustamos os valores de argc e argv para atender a esse requisito.
+
+Então podemos executar o esse programa 'c' como:
+
+``` bash
+./c_program file.exe
+```
+
+Certifique-se de que você sempre forneça um método Main() e execute-o com o `mono_jit_exec()` no início: isso configura algumas informações adicionais no domínio da aplicação, 
+como por exemplo o assembly principal e o caminho base para carregamento. Você continuará podendo executar outros métodos mesmo depois que método Main() retornar.
 
 Se você quiser invocar um método diferente, dê uma olhada na seção [Invocando Métodos no Universo CIL](#invoking-methods-in-the-cil-universe).
 

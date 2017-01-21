@@ -56,10 +56,6 @@ Outros tutoriais Gtk#
 
 [http://www.monodevelop.com/documentation/building-a-simple-application-using-the-stetic-gui-designer/](http://www.monodevelop.com/documentation/building-a-simple-application-using-the-stetic-gui-designer/)
 
--   Uma coletânea antiga de documentação referente ao Gtk# (seria interessante se alguém pudesse garimpar o que tiver de mais relevante lá e inserir na página Wiki do projeto...)
-
-[http://www.gotmono.com/docs/gnome/bindings/gtk-sharp/gtk-sharp.html](http://www.gotmono.com/docs/gnome/bindings/gtk-sharp/gtk-sharp.html)
-
 -   Como construir uma aplicação Gtk# no Windows utilizando o Glade e o Visual Studio .NET 2003
 
 [http://www.mfconsulting.com/tutorial/newgladeapp/](http://www.mfconsulting.com/tutorial/newgladeapp/)

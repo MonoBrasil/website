@@ -22,7 +22,7 @@ On Debian based distribution you should guarantee that some packages are install
 This can be done easily by using *apt-get*:
 
 ```bash
-  $ sudo apt-get install git autoconf libtool automake build-essential mono-devel gettext
+  $ sudo apt-get install git autoconf libtool automake build-essential mono-devel gettext cmake
 ```
 
 Note: if you are using Ubuntu 15.04 or later, you also need to install the `libtool-bin` package. Without it, you will get the following error: `**Error**: You must have 'libtool' installed to compile Mono.`
@@ -30,7 +30,7 @@ Note: if you are using Ubuntu 15.04 or later, you also need to install the `libt
 Building Mono from a Release Package
 ------------------------------------
 
-Mono releases are distributed as .tar.bz2 packages from the [Mono web site](http://download.mono-project.com/sources/mono/). Once you have your dependencies installed all you need to do is run the following command where VERSION is the package version number and PREFIX is your installation prefix:
+Mono releases are distributed as .tar.bz2 packages from the [Mono web site](https://download.mono-project.com/sources/mono/). Once you have your dependencies installed all you need to do is run the following command where VERSION is the package version number and PREFIX is your installation prefix:
 
 ``` bash
 PREFIX=/usr/local
@@ -78,7 +78,7 @@ sudo mkdir $PREFIX
 sudo chown -R `whoami` $PREFIX
 
 # Ensure that all required packages are installed.
-sudo apt-get install git autoconf libtool automake build-essential mono-devel gettext
+sudo apt-get install git autoconf libtool automake build-essential mono-devel gettext cmake
 
 PATH=$PREFIX/bin:$PATH
 git clone https://github.com/mono/mono.git
