@@ -11,7 +11,8 @@ Para mais informações veja [Perfil](/docs/debug+profile/profile/).
 MonoCov
 =======
 
-O MonoCov é composto por dois componentes: Um módulo de cobertura de código e uma GUI (interface gráfica) para fazer a cobertura de código. Isto está disponível como parte do pacote "monocov" (diponível [aqui](http://github.com/mono/monocov)).
+O MonoCov é composto por dois componentes: Um módulo de cobertura de código e uma GUI (interface gráfica) para fazer a cobertura de código. 
+Isto está disponível como parte do pacote "monocov" (diponível [aqui](http://github.com/mono/monocov)).
 
 Para usá-lo, execute o comando dessa forma:
 
